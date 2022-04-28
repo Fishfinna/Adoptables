@@ -1,0 +1,71 @@
+[{
+        "id": 1,
+        "first_name": "Benjie",
+        "gender": "male",
+        "species": "dog",
+        "age": 12
+    },
+    {
+        "id": 2,
+        "first_name": "Adams",
+        "gender": "male",
+        "species": "cat",
+        "age": 9
+    },
+    {
+        "id": 3,
+        "first_name": "Darby",
+        "gender": "female",
+        "species": "cat",
+        "age": 7
+    },
+    {
+        "id": 4,
+        "first_name": "Zebulon",
+        "gender": "male",
+        "species": "cat",
+        "age": 1
+    },
+    {
+        "id": 5,
+        "first_name": "Hinze",
+        "gender": "female",
+        "species": "dog",
+        "age": 5
+    },
+    {
+        "id": 6,
+        "first_name": "Abdul",
+        "gender": "female",
+        "species": "cat",
+        "age": 7
+    },
+    {
+        "id": 7,
+        "first_name": "Karita",
+        "gender": "male",
+        "species": "dog",
+        "age": 12
+    },
+    {
+        "id": 8,
+        "first_name": "Brad",
+        "gender": "female",
+        "species": "dog",
+        "age": 2
+    },
+    {
+        "id": 9,
+        "first_name": "Murdock",
+        "gender": "male",
+        "species": "dog",
+        "age": 6
+    },
+    {
+        "id": 10,
+        "first_name": "Lilas",
+        "gender": "female",
+        "species": "cat",
+        "age": 5
+    }
+]

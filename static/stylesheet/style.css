@@ -1,0 +1,91 @@
+/* COLORS:
+
+
+Accents:
+Pink: #E94B7F
+
+Bases:
+White: 
+Dark Black: background-color: #1C1C26;
+
+*/
+
+
+/* title fonts: Caveat */
+
+
+/* normal fonts: Dosis */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dosis&display=swap');
+html {
+    font-family: 'Dosis';
+    background-color: #ecedeb;
+    color: #4d3247;
+}
+
+body {
+    margin: 0;
+}
+
+main>h1 {
+    text-align: center;
+    background-color: #ecedeb;
+    font-size: 4rem;
+}
+
+nav {
+    background-color: #E94B7F;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4%;
+    position: sticky;
+}
+
+.nav-buttons a {
+    background-color: #ef6794;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.nav-buttons a:hover {
+    background-color: #C02C4F;
+}
+
+a {
+    text-decoration: none;
+    color: #ecedeb;
+}
+
+main>* {
+    margin: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    background: #e6e2dc;
+    font-size: 100%;
+}
+
+.animal-info {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: #e0cec4;
+    padding: 5px;
+    border-radius: 100px 0px 100px 0px;
+}
+
+.animal-info * {
+    padding: 20px;
+    font-size: 120%;
+}
+
+.pet-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.pet-container:hover {
+    background-color: #e9dad3;
+}
