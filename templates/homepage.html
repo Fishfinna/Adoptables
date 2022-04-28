@@ -22,14 +22,16 @@
         <h1>Currently Adoptable Pets</h1>
 
         {% for pet in pets %}
-        <div class="pet-container">
+        <a href="/adopt/{{pet.id}}" class="pet-container">
+
             <h1>{{ pet.name }}</h1>
             <div class="animal-info">
                 <p>Species: {{pet.species}}</p>
                 <p>Age: {{pet.age}}</p>
                 <p>Gender: {{pet.gender}}</p>
             </div>
-        </div>
+
+        </a>
         {% endfor %}
 
     </main>

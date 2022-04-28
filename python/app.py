@@ -10,7 +10,7 @@ class App:
             self.pets = [Pet(*i.values()) for i in data]
 
     def get_by_id(self, id):
-        return [i for i in self.pets if i.id == id]
+        return [i for i in self.pets if i.id == id][0]
 
     def get_pets(self):
         return self.pets
@@ -39,3 +39,7 @@ class App:
     def save(self):
         with open("data/pet.json", "w") as file:
             json.dump(file, [pet.to_dict() for pet in self.pets])
+
+
+a = App()
+print(a.get_by_id(1).name)
