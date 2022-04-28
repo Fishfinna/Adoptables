@@ -19,8 +19,7 @@ def infopage():
 
 @app.route("/adopt/<id>")
 def petpage(id):
-    id = int(id)
-    select = App().get_by_id(id)
+    select = App().get_by_id(id)[0]
     return render_template("pet.html", pet=select)
 
 
