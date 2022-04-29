@@ -23,8 +23,17 @@ html {
     color: #4d3247;
 }
 
+pre {
+    font-family: 'Dosis';
+}
+
 body {
     margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
 }
 
 main>h1 {
@@ -36,10 +45,10 @@ main>h1 {
 nav {
     z-index: 999;
     background-color: #4d3247;
+    padding: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 4%;
     position: sticky;
     top: 0;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -68,8 +77,11 @@ main>*>div {
     padding: 20px;
     border-radius: 20px;
     color: #4d3247;
-    background: #e6e2dc;
     font-size: 100%;
+}
+
+main>* {
+    background: #e6e2dc;
 }
 
 .animal-info {
@@ -102,10 +114,10 @@ main>*>div {
 
 img {
     margin: 1rem;
-    transition: all .2s ease-in-out;
+    transition: all .4s ease-in-out;
     width: 20rem;
     height: 20rem;
-    border-radius: 8px;
+    border-radius: 20px;
     align-self: center;
     justify-self: center;
     object-fit: cover;
@@ -113,7 +125,7 @@ img {
 }
 
 .pet-container:hover img {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .div-pet-page {
@@ -126,9 +138,14 @@ img {
 }
 
 .button-container {
-    background-color: transparent;
+    margin-top: -8%;
     display: flex;
-    justify-content: flex-end;
+    align-self: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 button {

@@ -10,12 +10,13 @@ class App:
             self.pets = [Pet(*i.values()) for i in data]
 
     def get_by_id(self, id):
-        return [i for i in self.pets if i.id == id]
+        if [i for i in self.pets if i.id == id] != []:
+            return [i for i in self.pets if i.id == id][0]
 
     def get_pets(self):
         return self.pets
 
-    def delete_pet(self, id):
+    def delete_by_id(self, id):
         self.pets = [i for i in self.pets if i.id != id]
         self.save()
 
@@ -37,5 +38,5 @@ class App:
         self.save()
 
     def save(self):
-        with open("data/pet.json", "w") as file:
-            json.dump(file, [pet.to_dict() for pet in self.pets])
+        with open("data/pets.json", "w") as file:
+            json.dump([pet.to_dict() for pet in self.pets], file)
