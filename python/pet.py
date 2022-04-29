@@ -1,6 +1,5 @@
-
 class Pet:
-    def __init__(self, id, name="", gender="", species="", age="", description="", image=""):
+    def __init__(self, id, name="", gender="", species="", age="", description="", image="", data=""):
 
         if type(name) != str:
             raise TypeError
@@ -21,6 +20,8 @@ class Pet:
             self.image = f"{id}.jpg"
         else:
             self.image = image
+
+        self.data = data
 
     def __repr__(self):
         return f"""< PET name:{self.name} age:{self.age} species:{self.species} gender:{self.gender}>"""

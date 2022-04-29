@@ -22,7 +22,7 @@
         <h1>Hello! my name is {{pet.name}}!</h1>
         <div>
             <div class="div-pet-page">
-                <img src="/static/images/pets/{{pet.id}}.jpg">
+                <img src=" {{ url_for( 'file', filename=pet.image ) }}">
                 <div>
                     <p>Species: {{pet.species}}</p>
                     <p>Age: {{pet.age}}</p>

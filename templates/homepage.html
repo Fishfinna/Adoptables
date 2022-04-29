@@ -22,28 +22,27 @@
         <h1>Currently Adoptable Pets</h1>
 
         {% for pet in pets %}
-
         <a href="/adopt/{{pet.id}}" class="pet-container">
 
             <h1>{{ pet.name }}</h1>
-            <img src="/static/images/pets/{{pet.image}}">
-            <div class="animal-info">
+            <img src=" {{ url_for( 'file', filename=pet.image ) }}">
+            <div class="animal-info ">
 
-                <p>Species: {{pet.species}}</p>
+                <p>Species: {{pet.species}} </p>
                 <p> Age: {{pet.age}} </p>
                 <p>Gender: {{pet.gender}}</p>
 
             </div>
         </a>
 
-        <div class="button-container">
+        <div class="button-container ">
 
-            <a href="/remove/{{pet.id}}">
-                <button class="delete">Delete</button>
+            <a href="/remove/{{pet.id}} ">
+                <button class="delete ">Delete</button>
             </a>
 
-            <a href="/edit/{{pet.id}}">
-                <button class="edit">Edit</button>
+            <a href="/edit/{{pet.id}} ">
+                <button class="edit ">Edit</button>
             </a>
 
         </div>
