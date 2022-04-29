@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/stylesheet/style.css">
+    <script defer src="/static/scripts/drag_drop.js"></script>
     <title>Adoptables Info Page</title>
 </head>
 
@@ -22,24 +23,53 @@
 
 
 
+        <h1>Add A New Pet For Adoption</h1>
+
+        <form method="post" action="/add/newPet">
+            <fieldset>
+
+                <legend class="form-inner">Pet Information</legend>
+                <label for="pet_name">Pet name:</label>
+                <input type="text" placeholder="name" id="pet_name">
+
+                <label for="pet_gender">Gender:</label>
+                <input type="text" placeholder="gender" id="pet_gender">
+
+                <br>
+
+                <label for="pet_species">Species:</label>
+                <select name="species" id="pet_species">
+                    <option value="dog">Dog</option>
+                    <option value="cat">Cat</option>
+                    <option value="rodent">Rodent</option>
+                    <option value="bird">Bird</option>
+                    <option value="reptile">Reptile</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="pet_age">Age:</label>
+                <input type="text" placeholder="age" id="pet_age">
+
+                <br>
+
+                <label for="pet_description">Description:</label>
+                <textarea placeholder="description..." rows="10" id="pet_description"></textarea>
+
+                <div>
+                    <label for="drop-add">Upload an Image:</label>
+                    <div class="drop-zone">
+                        <span class="drop-zone__prompt">Drop an image in here or click to upload</span>
+                        <input type="file" id="drop-add" name="myfile" class="drop-zone__input">
+                    </div>
+                </div>
 
 
+            </fieldset>
+            <button type="submit">Submit</button>
 
+        </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </script>
 
     </main>
 </body>

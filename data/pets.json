@@ -1,6 +1,6 @@
 [{
         "id": "1",
-        "first_name": "Benjie",
+        "name": "Benjie",
         "gender": "male",
         "species": "dog",
         "age": "12",
@@ -9,7 +9,7 @@
     },
     {
         "id": "2",
-        "first_name": "Adams",
+        "name": "Adams",
         "gender": "male",
         "species": "cat",
         "age": "9",
@@ -18,7 +18,7 @@
     },
     {
         "id": "3",
-        "first_name": "Darby",
+        "name": "Darby",
         "gender": "female",
         "species": "cat",
         "age": "0",
