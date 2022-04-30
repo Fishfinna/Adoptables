@@ -3,6 +3,7 @@ import json
 from flask_pymongo import PyMongo
 from python.pet import Pet
 from bson.objectid import ObjectId
+from cryptography.fernet import Fernet
 import random
 import string
 
@@ -12,6 +13,9 @@ app = Flask(__name__)
 # Mongo Setup
 app.config["MONGO_URI"] = "mongodb://acit2911:acit2911@acit-shard-00-00.czvf4.mongodb.net:27017,acit-shard-00-01.czvf4.mongodb.net:27017,acit-shard-00-02.czvf4.mongodb.net:27017/pet-app?ssl=true&replicaSet=atlas-11g06a-shard-0&authSource=admin&retryWrites=true&w=majority"
 mongo = PyMongo(app)
+
+# this is the key for encoding
+key = Fernet.generate_key()
 
 
 @app.route('/file/<filename>')
