@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for, send_file
-import requests
 import json
 from flask_pymongo import PyMongo
 from python.pet import Pet
@@ -10,16 +9,15 @@ import string
 
 app = Flask(__name__)
 
+# Mongo Setup
+app.config["MONGO_URI"] = "mongodb://acit2911:acit2911@acit-shard-00-00.czvf4.mongodb.net:27017,acit-shard-00-01.czvf4.mongodb.net:27017,acit-shard-00-02.czvf4.mongodb.net:27017/pet-app?ssl=true&replicaSet=atlas-11g06a-shard-0&authSource=admin&retryWrites=true&w=majority"
+mongo = PyMongo(app)
+
 
 @app.route('/file/<filename>')
 def file(filename):
     """This will hosts binary images for us"""
     return mongo.db.pets.find_one({"image": filename})['data']
-
-
-# Mongo Setup
-app.config["MONGO_URI"] = "mongodb://acit2911:acit2911@acit-shard-00-00.czvf4.mongodb.net:27017,acit-shard-00-01.czvf4.mongodb.net:27017,acit-shard-00-02.czvf4.mongodb.net:27017/pet-app?ssl=true&replicaSet=atlas-11g06a-shard-0&authSource=admin&retryWrites=true&w=majority"
-mongo = PyMongo(app)
 
 
 @app.route("/")
@@ -66,7 +64,7 @@ def pet_manage_adder():
             "name": request.form.get("pet_name"),
             "gender": request.form.get("pet_gender"),
             "species": request.form.get("species"),
-            "age": request.form.get("pet_gender"),
+            "age": request.form.get("pet_age"),
             "description": request.form.get("pet_description"),
             # these two are for the image information:
             "image": ''.join(random.sample(string.ascii_letters+string.digits, 20)) + pet_photo.filename,
