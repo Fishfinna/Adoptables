@@ -75,5 +75,43 @@ def pet_manage_adder():
     return redirect('/')
 
 
+@app.route("/edit/<id>")
+def editpet(id):
+    """this will desplay the currently selected pet"""
+    selected = mongo.db.pets.find_one({"_id": ObjectId(id)})
+    pet = Pet(*selected.values())
+    return render_template("edit.html", pet=pet)
+
+
+@app.route("/edit/<id>/put", methods=["POST"])
+def pet_manage_edit(id):
+    """This will be the update pet page output"""
+    selected = mongo.db.pets.find_one_or_404({"_id": ObjectId(id)})
+
+    pet_data = selected["data"]
+    image_name = selected["image"]
+    if request.files["myfile"]:
+        pet_photo = request.files["myfile"]
+        image_name = ''.join(random.sample(
+            string.ascii_letters+string.digits, 20)) + pet_photo.filename
+        pet_data = pet_photo.read()
+
+    update_selected = {"$set": {
+        # the following object will replace that pet
+        "name": request.form.get("pet_name"),
+        "gender": request.form.get("pet_gender"),
+        "species": request.form.get("species"),
+        "age": request.form.get("pet_age"),
+        "description": request.form.get("pet_description"),
+        # these two are for the image information:
+        "image": image_name,
+        "data": pet_data
+    }}
+
+    mongo.db.pets.update_one(selected, update_selected)
+
+    return redirect('/')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
