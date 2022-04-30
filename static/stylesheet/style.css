@@ -1,22 +1,9 @@
-/* COLORS:
-
-
-Accents:
-Pink: #E94B7F
-
-Bases:
-White: 
-Dark Black: background-color: #1C1C26;
-
-*/
-
-
-/* title fonts: Caveat */
-
-
-/* normal fonts: Dosis */
+/* imports */
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dosis&display=swap');
+
+/* basic text definitions */
+
 html {
     font-family: 'Dosis';
     background-color: #ecedeb;
@@ -36,11 +23,18 @@ main {
     flex-direction: column;
 }
 
-main>h1 {
+h1 {
     text-align: center;
-    background-color: #ecedeb;
-    font-size: 4rem;
+    font-size: 4em;
 }
+
+h3 {
+    text-align: center;
+    font-size: 3em;
+}
+
+
+/* nav bar */
 
 nav {
     z-index: 999;
@@ -72,10 +66,13 @@ a {
     color: #ecedeb;
 }
 
+
+/* main pages */
+
 main>*,
 main>*>div {
-    margin: 10px;
-    padding: 20px;
+    margin: 2%;
+    padding: 2%;
     border-radius: 20px;
     color: #4d3247;
     font-size: 100%;
@@ -102,9 +99,10 @@ main>* {
 }
 
 .pet-container {
-    margin: 10%;
+    margin: 2%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: flex-end;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
@@ -114,15 +112,22 @@ main>* {
 }
 
 img {
-    margin: 1rem;
+    margin: 1em;
     transition: all .4s ease-in-out;
-    width: 20rem;
-    height: 20rem;
-    border-radius: 20px;
+    width: 20em;
+    height: 20em;
+    border-radius: 1.5em;
     align-self: center;
     justify-self: center;
     object-fit: cover;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.pet-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .pet-container:hover img {
@@ -142,24 +147,22 @@ img {
 /* Buttons */
 
 .button-container {
-    margin-top: -8%;
     display: flex;
     align-self: center;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 40%;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    max-width: 40%;
 }
 
 button {
     color: #ecedeb;
-    margin-left: 1rem;
+    margin-left: 1em;
     border: none;
     background-color: #a57573;
     border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
+    padding: 1em;
+    margin: 1em;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
