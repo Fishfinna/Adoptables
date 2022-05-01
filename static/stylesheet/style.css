@@ -33,6 +33,12 @@ h3 {
     font-size: 3em;
 }
 
+a {
+    font-family: 'Dosis';
+    text-decoration: none;
+    color: #4d3247;
+}
+
 
 /* nav bar */
 
@@ -61,8 +67,7 @@ nav {
     background-color: #9b5263;
 }
 
-a {
-    text-decoration: none;
+.nav-buttons>a {
     color: #ecedeb;
 }
 
@@ -182,30 +187,71 @@ button:hover {
 /* FORMS */
 
 form * {
+    font-family: 'Dosis';
     margin: 10px;
+}
+
+legend {
+    font-size: 200%;
+}
+
+fieldset {
+    padding: 5%;
+    font-size: 140%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+label {
+    font-weight: bold;
+    display: inline-block;
+    align-self: center;
+}
+
+input[type=text],
+select,
+textarea {
+    font-size: 120%;
+    color: #4d3247;
+    background-color: #ecedeb;
+    font-weight: 600;
+    width: 100%;
+    padding: 12px;
+    border: 2px solid rgb(189, 178, 178);
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
 }
 
 
 /* drag and drop */
 
+.image-upload {
+    position: relative;
+    align-self: center;
+}
+
 .drop-zone {
-    max-width: 200px;
-    height: 200px;
-    padding: 25px;
+    background-color: #ecedeb;
+    min-width: 20rem;
+    height: 20rem;
+    padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-weight: 500;
-    font-size: 20px;
     cursor: pointer;
-    border: 2px dotted #4d3247;
+    border: 2px solid rgb(189, 178, 178);
     border-radius: 10px;
 }
 
-.drop-zone--over {
-    border-style: solid;
-    background-color: #a57573;
+.drop-zone--over,
+.drop-zone:hover {
+    background-color: #e0cec4;
 }
 
 .drop-zone__input {
@@ -215,7 +261,7 @@ form * {
 .drop-zone__thumb {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
+    border-radius: 20px;
     overflow: hidden;
     background-color: #ecedeb;
     background-size: cover;
@@ -229,8 +275,16 @@ form * {
     left: 0;
     width: 100%;
     padding: 5px 0;
-    color: #ffffff;
+    color: #ecedeb;
     background: rgba(0, 0, 0, 0.75);
     font-size: 14px;
     text-align: center;
+}
+
+.photo-icon {
+    position: absolute;
+    box-shadow: none;
+    max-width: 200px;
+    max-height: 200px;
+    filter: opacity(5%);
 }

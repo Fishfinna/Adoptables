@@ -22,22 +22,26 @@
 
     <h1>Add A New Pet For Adoption</h1>
 
-    <main class="add">
+    <main class="pet-form">
 
         <form method="post" action="/add/newPet" enctype="multipart/form-data">
             <fieldset>
 
                 <legend class="form-inner">Pet Information</legend>
-                <label for="pet_name">Pet name:</label>
-                <input type="text" placeholder="name" name="pet_name">
+                <div>
+                    <label for="pet_name">Pet name:</label>
+                    <input type="text" placeholder="name" name="pet_name">
 
-                <label for="pet_gender">Gender:</label>
-                <input type="text" placeholder="gender" name="pet_gender">
+                    <label for="pet_gender">Gender:</label>
+                    <input type="text" placeholder="gender" name="pet_gender">
 
-                <br>
 
-                <label for="pet_species">Species:</label>
-                <select name="species" name="pet_species">
+                </div>
+
+
+                <div>
+                    <label for="pet_species">Species:</label>
+                    <select name="species" name="pet_species">
                     <option value="dog">Dog</option>
                     <option value="cat">Cat</option>
                     <option value="rodent">Rodent</option>
@@ -45,19 +49,26 @@
                     <option value="reptile">Reptile</option>
                     <option value="other">Other</option>
                 </select>
+                </div>
 
-                <label for="pet_age">Age:</label>
-                <input type="text" placeholder="age" name="pet_age">
+                <div>
+                    <label for="pet_age">Age:</label>
+                    <input type="text" placeholder="age" name="pet_age">
+                </div>
 
                 <br>
 
-                <label for="pet_description">Description:</label>
-                <textarea placeholder="description..." rows="10" name="pet_description"></textarea>
-
                 <div>
+                    <label for="pet_description">Description:</label>
+                    <textarea placeholder="description..." rows="10" name="pet_description"></textarea>
+                </div>
+
+                <div class="image-upload">
                     <label for="myfile">Upload an Image:</label>
                     <div class="drop-zone">
+                        <img class="photo-icon" src="https://www.freeiconspng.com/thumbs/camera-icon/camera-icon-21.png">
                         <span class="drop-zone__prompt">Drop an image in here or click to upload</span>
+
                         <input type="file" name="myfile" class="drop-zone__input">
                     </div>
                 </div>
