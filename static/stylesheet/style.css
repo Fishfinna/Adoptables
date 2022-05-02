@@ -99,8 +99,8 @@ main>* {
 
 .animal-info * {
     font-weight: bold;
-    padding: 20px;
-    font-size: 150%;
+    padding: 2em;
+    font-size: 120%;
 }
 
 .pet-container {
@@ -161,6 +161,7 @@ img {
 }
 
 button {
+    transition: all .1s ease-in-out;
     color: #ecedeb;
     margin-left: 1em;
     border: none;
@@ -180,6 +181,8 @@ button.edit {
 }
 
 button:hover {
+    letter-spacing: .05em;
+    transform: scale(1.1);
     filter: brightness(120%);
 }
 
