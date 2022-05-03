@@ -3,7 +3,6 @@ import json
 from flask_pymongo import PyMongo
 from python.pet import Pet
 from bson.objectid import ObjectId
-from cryptography.fernet import Fernet
 import random
 import string
 
@@ -111,6 +110,11 @@ def pet_manage_edit(id):
     mongo.db.pets.update_one(selected, update_selected)
 
     return redirect('/')
+
+
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
 
 
 if __name__ == "__main__":

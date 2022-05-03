@@ -16,6 +16,7 @@
             <a href="/">HOME</a>
             <a href="/info">LEARN MORE</a>
             <a href="/add"> ADD A PET</a>
+            <a href="/signup">SIGNUP</a>
         </div>
     </nav>
 
@@ -30,10 +31,10 @@
                 <legend class="form-inner">Pet Information</legend>
                 <div>
                     <label for="pet_name">Pet name:</label>
-                    <input type="text" placeholder="name" name="pet_name">
+                    <input type="text" placeholder="name" name="pet_name" required>
 
                     <label for="pet_gender">Gender:</label>
-                    <input type="text" placeholder="gender" name="pet_gender">
+                    <input type="text" placeholder="gender" name="pet_gender" required>
 
 
                 </div>
@@ -41,19 +42,19 @@
 
                 <div>
                     <label for="pet_species">Species:</label>
-                    <select name="species" name="pet_species">
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="rodent">Rodent</option>
-                    <option value="bird">Bird</option>
-                    <option value="reptile">Reptile</option>
-                    <option value="other">Other</option>
-                </select>
+                    <select name="species" name="pet_species" required>
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                        <option value="rodent">Rodent</option>
+                        <option value="bird">Bird</option>
+                        <option value="reptile">Reptile</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
 
                 <div>
                     <label for="pet_age">Age:</label>
-                    <input type="text" placeholder="age" name="pet_age">
+                    <input type="text" placeholder="age" name="pet_age" required>
                 </div>
 
                 <br>
@@ -66,7 +67,8 @@
                 <div class="image-upload">
                     <label for="myfile">Upload an Image:</label>
                     <div class="drop-zone">
-                        <img class="photo-icon" src="https://www.freeiconspng.com/thumbs/camera-icon/camera-icon-21.png">
+                        <img class="photo-icon" src="https://www.freeiconspng.com/thumbs/camera-icon/camera-icon-21.png"
+                            required>
                         <span class="drop-zone__prompt">Drop an image in here or click to upload</span>
 
                         <input type="file" name="myfile" class="drop-zone__input">

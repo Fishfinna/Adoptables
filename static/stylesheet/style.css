@@ -214,6 +214,9 @@ label {
 }
 
 input[type=text],
+input[type=email],
+input[type=tel],
+input[type=password],
 select,
 textarea {
     font-size: 120%;
@@ -230,6 +233,34 @@ textarea {
     resize: vertical;
 }
 
+.address-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.address-form * {
+    align-items: center;
+    justify-content: center;
+    font-size: 120%;
+    color: #4d3247;
+    font-weight: 600;
+    padding: 12px;
+    border: 2px solid rgb(189, 178, 178);
+    background-color: #ecedeb;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.address-form *:first-child {
+    font-size: 120%;
+    color: #4d3247;
+    font-weight: 600;
+}
 
 /* drag and drop */
 
