@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/stylesheet/style.css">
+    <title>Adoptables Info Page</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-buttons">
+            <a href="/">HOME</a>
+            <a href="/info">LEARN MORE</a>
+            <a href="/add"> ADD A PET</a>
+        </div>
+    </nav>
+
+    <h1>Hello! my name is {{pet.name}}!</h1>
+
+    <main class="pet-page">
+        <div>
+            <div class="div-pet-page">
+                <img src=" {{ url_for( 'file', filename=pet.image ) }}">
+                <div>
+                    <p>Species: {{pet.species}}</p>
+                    <p>Age: {{pet.age}}</p>
+                    <p>Gender: {{pet.gender}}</p>
+                </div>
+            </div>
+            <br>
+            <h2>
+                Shelter Contact Information
+            </h2>
+            <div class="animal-info">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum facilis eius assumenda laboriosam nostrum delectus unde deserunt culpa repudiandae perferendis, quos nam porro. Rerum minima veniam quisquam modi natus?
+            </div>
+            <h2>Description</h2>
+            <pre>{{pet.description}}</pre>
+        </div>
+
+    </main>
+</body>
+
+</html>

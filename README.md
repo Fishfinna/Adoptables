@@ -12,5 +12,5 @@ Hai Run (Kooby) Yin
 Mike Javee (MJ) Galam
 Coburn Nguyen
 
-## VI part- sigin up form
-I have created a html file for sign up form, I will like CSS and add javascript later 
+## Project Dependencies
+Our Dependencies are: flask, requests, flask_pymongo

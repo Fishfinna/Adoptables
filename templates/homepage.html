@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/stylesheet/style.css">
+    <title>Adoptables Home Page</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-buttons">
+            <a href="/">HOME</a>
+            <a href="/info">LEARN MORE</a>
+            <a href="/add"> ADD A PET</a>
+        </div>
+    </nav>
+
+    <h1>Currently Adoptable Pets</h1>
+
+    <main class="pet-list">
+
+        {% for pet in pets %}
+
+        <div class="pet-container">
+
+            <h3>{{ pet.name }}</h3>
+            <a href="/adopt/{{pet.id}}">
+                <img src=" {{ url_for( 'file', filename=pet.image ) }}">
+            </a>
+            <div class="animal-info ">
+
+                <p>Species: {{pet.species}} </p>
+                <p> Age: {{pet.age}} </p>
+                <p>Gender: {{pet.gender}}</p>
+
+            </div>
+            <div class="button-container ">
+
+                <a href="/remove/{{pet.id}} ">
+                    <button class="delete ">Delete</button>
+                </a>
+
+                <a href="/edit/{{pet.id}} ">
+                    <button class="edit ">Edit</button>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        </div>
+
+        {% endfor %}
+
+    </main>
+
+
+</body>
+
+</html>
