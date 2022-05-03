@@ -13,5 +13,4 @@ Mike Javee (MJ) Galam
 Coburn Nguyen
 
 ## Project Dependencies
-
 Our Dependencies are: flask, requests, flask_pymongo
