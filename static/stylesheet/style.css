@@ -231,3 +231,10 @@ form * {
     font-size: 14px;
     text-align: center;
 }
+
+.profile_body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
