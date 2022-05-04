@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dosis&display=swap');
+html {
+    font-family: 'Dosis';
+    background-color: #ecedeb;
+    color: #4d3247;
+}
+
+pre {
+    font-family: 'Dosis';
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+main>h1 {
+    text-align: center;
+    background-color: #ecedeb;
+    font-size: 4rem;
+}
+
+nav {
+    z-index: 999;
+    background-color: #4d3247;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: sticky;
+    justify-content: flex-end;
+    top: 0;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.nav-buttons a {
+    background-color: #a57573;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.nav-buttons a:hover {
+    background-color: #9b5263;
+}
+
+a {
+    text-decoration: none;
+    color: #ecedeb;
+}
