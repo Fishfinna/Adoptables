@@ -17,7 +17,11 @@ mongo = PyMongo(app)
 @app.route('/file/<filename>')
 def file(filename):
     """This will hosts binary images for us"""
-    return mongo.db.pets.find_one({"image": filename})['data']
+    try:
+        image = mongo.db.pets.find_one({"image": filename})['data']
+        return image
+    except:
+        return "404: file not found", 404
 
 
 @app.route("/")
@@ -34,7 +38,7 @@ def infopage():
 
 
 @app.route("/adopt/<string:id>")
-def petpage(id):
+def adopt_info(id):
     """idividual pet page"""
     selected = mongo.db.pets.find_one({"_id": ObjectId(id)})
     pet = Pet(*selected.values())
