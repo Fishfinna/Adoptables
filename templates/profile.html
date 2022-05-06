@@ -1,53 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+ {% extends "base.html"%} {% block content %}
+<div class="profile_content">
+    <div class=profile_div>
+        <h2>Shelter Name: {{profile.shelter_name}}</h2>
+        <p>Account Name: {{profile.username}}</p>
+        <p>Email: {{profile.email}}</p>
+        <p>Phone Number: {{profile.phone}}</p>
+        <p>Address: {{profile.street}}, {{profile.city}}, {{profile.province}}. {{profile.postal}}</p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/stylesheet/style.css">
-    <title>Document</title>
-</head>
+    </div>
+</div>
 
-<body>
 
-    <nav>
-        <div class="nav-buttons">
-            <div class="nav-buttons">
-                <a href="/">HOME</a>
-                <a href="/info">LEARN MORE</a>
-                <a href="/add">ADD A PET</a>
-                <a href="/signup">SIGNUP</a>
-                <a href="/signup">LOGIN</a>
-            </div>
+<h3>Listed Pets:</h3>
+<main class="pet-list">
+    <a href="/add" id="add-pet-button"><button> <b>+</b> ADD A PET</button></a> {% for pet in pets %}
+
+    <div class="pet-container">
+
+        <h3>{{ pet.name }}</h3>
+        <a href="/adopt/{{pet.id}}">
+            <img src=" {{ url_for( 'file', filename=pet.image ) }}">
+        </a>
+        <div class="animal-info ">
+
+            <p>Species: {{pet.species}} </p>
+            <p> Age: {{pet.age}} </p>
+            <p>Gender: {{pet.gender}}</p>
+
         </div>
-    </nav>
+        <div class="button-container ">
 
-    <main class="profile-main">
-        <div class="profile_content">
-            <div class=profile>
-                <div class=profile_body>
-                    <div class=profile_image>
-                        <img src="/static/images/profile/{{profile.id}}.jpg">
-                    </div>
-                    <div class=profile_div>
-                        <h1>About</h1>
-                        <p>Full Name: {{profile.name}}</p>
-                        <p>Title: {{profile.title}}</p>
-                        <p>Email: {{profile.email}}</p>
-                        <p>Phone Number: {{profile.number}}</p>
-                        <p>Address: {{profile.Address}}</p>
-                        <h1>Listed Pet</h1>
-                    </div>
-                    <div class=profile_div>
-                        <div class="listed_pet_container">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a href="/remove/{{pet.id}} ">
+                <button class="delete ">Delete</button>
+            </a>
+
+            <a href="/edit/{{pet.id}} ">
+                <button class="edit ">Edit</button>
+            </a>
+
         </div>
-    </main>
 
-</body>
+    </div>
 
-</html>
+
+    </div>
+
+    {% endfor %}
+
+</main>
+{% endblock %}

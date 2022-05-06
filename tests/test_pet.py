@@ -5,7 +5,16 @@ import pytest
 @pytest.fixture
 def data():
     """data fixture we can use in other parts of the code"""
-    return ["ID123", "max", "gender", "dog", "1", "this is the description", "filename.jpg", "101"]
+    return [
+        "ID123",
+        "max",
+        "gender",
+        "dog",
+        "1",
+        "this is the description",
+        "filename.jpg",
+        "101",
+    ]
 
 
 def test_init_errors():
@@ -13,18 +22,42 @@ def test_init_errors():
 
     with pytest.raises(TypeError):
         # this changes the name into a number, which we want to crash when we make it into a pet
-        Pet("ID123", 123, "gender", "dog", "1",
-            "this is the description", "filename.jpg", "101")
+        Pet(
+            "ID123",
+            123,
+            "gender",
+            "dog",
+            "1",
+            "this is the description",
+            "filename.jpg",
+            "101",
+        )
 
     with pytest.raises(TypeError):
         # this checks the gender is a string
-        Pet("ID123", "max", 123, "cat", "1",
-            "this is the description", "filename.jpg", "101")
+        Pet(
+            "ID123",
+            "max",
+            123,
+            "cat",
+            "1",
+            "this is the description",
+            "filename.jpg",
+            "101",
+        )
 
     with pytest.raises(ValueError):
         # this checks the species is a string
-        Pet("ID123", "max", "gender", "Human", "1",
-            "this is the description", "filename.jpg", "101")
+        Pet(
+            "ID123",
+            "max",
+            "gender",
+            "Human",
+            "1",
+            "this is the description",
+            "filename.jpg",
+            "101",
+        )
 
 
 def test_init(data):
@@ -33,8 +66,9 @@ def test_init(data):
     pet = Pet(*data)
     assert pet.image == "filename.jpg"
 
-    pet_image_none = Pet("ID123", "max", "gender", "dog", "1",
-                         "this is the description", "", "101")
+    pet_image_none = Pet(
+        "ID123", "max", "gender", "dog", "1", "this is the description", "", "101"
+    )
     assert pet_image_none.image == "ID123.jpg"
 
 
@@ -53,5 +87,5 @@ def test_to_dict(data):
         "species": f"{pet.species}",
         "age": f"{pet.age}",
         "description": f"{pet.description}",
-        "image": f"{pet.image}"
+        "image": f"{pet.image}",
     }

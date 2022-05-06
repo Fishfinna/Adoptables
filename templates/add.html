@@ -1,51 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+ {% extends "base.html"%} {% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/stylesheet/style.css">
-    <script defer src="/static/scripts/drag_drop.js"></script>
-    <title>Adoptables Info Page</title>
-</head>
+<h1>Add A New Pet For Adoption</h1>
 
-<body>
-    <nav>
-        <div class="nav-buttons">
-            <div class="nav-buttons">
-                <a href="/">HOME</a>
-                <a href="/info">LEARN MORE</a>
-                <a href="/add">ADD A PET</a>
-                <a href="/signup">SIGNUP</a>
-                <a href="/signup">LOGIN</a>
+<main class="pet-form">
+
+    <form method="post" action="/add/newPet" enctype="multipart/form-data">
+        <fieldset>
+
+            <legend class="form-inner">Pet Information</legend>
+            <div>
+                <label for="pet_name">Pet name:</label>
+                <input type="text" placeholder="name" name="pet_name" required>
+
+                <label for="pet_gender">Gender:</label>
+                <input type="text" placeholder="gender" name="pet_gender" required>
+
+
             </div>
-        </div>
-    </nav>
 
 
-    <h1>Add A New Pet For Adoption</h1>
-
-    <main class="pet-form">
-
-        <form method="post" action="/add/newPet" enctype="multipart/form-data">
-            <fieldset>
-
-                <legend class="form-inner">Pet Information</legend>
-                <div>
-                    <label for="pet_name">Pet name:</label>
-                    <input type="text" placeholder="name" name="pet_name" required>
-
-                    <label for="pet_gender">Gender:</label>
-                    <input type="text" placeholder="gender" name="pet_gender" required>
-
-
-                </div>
-
-
-                <div>
-                    <label for="pet_species">Species:</label>
-                    <select name="species" name="pet_species" required>
+            <div>
+                <label for="pet_species">Species:</label>
+                <select name="species" name="pet_species" required>
                         <option value="dog">Dog</option>
                         <option value="cat">Cat</option>
                         <option value="rodent">Rodent</option>
@@ -53,40 +29,38 @@
                         <option value="reptile">Reptile</option>
                         <option value="other">Other</option>
                     </select>
+            </div>
+
+            <div>
+                <label for="pet_age">Age:</label>
+                <input type="text" placeholder="age" name="pet_age" required>
+            </div>
+
+            <br>
+
+            <div>
+                <label for="pet_description">Description:</label>
+                <textarea placeholder="description..." rows="10" name="pet_description"></textarea>
+            </div>
+
+            <div class="image-upload">
+                <label for="myfile">Upload an Image:</label>
+                <div class="drop-zone">
+                    <script defer type="text/javascript" src="/static/scripts/drag_drop.js"></script>
+                    <img class="photo-icon" src="https://www.freeiconspng.com/thumbs/camera-icon/camera-icon-21.png" required>
+                    <span class="drop-zone__prompt">Drop an image in here or click to upload</span>
+
+                    <input type="file" name="myfile" class="drop-zone__input">
                 </div>
-
-                <div>
-                    <label for="pet_age">Age:</label>
-                    <input type="text" placeholder="age" name="pet_age" required>
-                </div>
-
-                <br>
-
-                <div>
-                    <label for="pet_description">Description:</label>
-                    <textarea placeholder="description..." rows="10" name="pet_description"></textarea>
-                </div>
-
-                <div class="image-upload">
-                    <label for="myfile">Upload an Image:</label>
-                    <div class="drop-zone">
-                        <img class="photo-icon" src="https://www.freeiconspng.com/thumbs/camera-icon/camera-icon-21.png"
-                            required>
-                        <span class="drop-zone__prompt">Drop an image in here or click to upload</span>
-
-                        <input type="file" name="myfile" class="drop-zone__input">
-                    </div>
-                </div>
+            </div>
 
 
-            </fieldset>
-            <button type="submit">Submit</button>
+        </fieldset>
+        <button type="submit">Submit</button>
 
-        </form>
+    </form>
 
-        </script>
+    </script>
 
-    </main>
-</body>
-
-</html>
+</main>
+{% endblock %}

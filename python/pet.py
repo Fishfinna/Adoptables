@@ -1,5 +1,16 @@
 class Pet:
-    def __init__(self, id, name="", gender="", species="", age="", description="", image="", data=""):
+    def __init__(
+        self,
+        id,
+        name="",
+        gender="",
+        species="",
+        age="",
+        description="",
+        image="",
+        data="",
+        shelter_username="",
+    ):
         """Generates the pet object"""
 
         if type(name) != str:
@@ -23,6 +34,7 @@ class Pet:
             self.image = image
 
         self.data = data
+        self.shelter_username = shelter_username
 
     def __str__(self):
         """The string converter dundar"""
@@ -37,5 +49,6 @@ class Pet:
             "species": f"{self.species}",
             "age": f"{self.age}",
             "description": f"{self.description}",
-            "image": f"{self.image}"
+            "image": f"{self.image}",
+            "shelter_username": self.shelter_username,
         }

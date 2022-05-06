@@ -29,7 +29,8 @@ h1 {
 }
 
 h3 {
-    text-align: center;
+    text-align: left;
+    padding-left: 1em;
     font-size: 3em;
 }
 
@@ -148,6 +149,15 @@ img {
     font-size: 150%;
 }
 
+.pet-contact-info {
+    background-color: #e0cec4;
+    padding: 2%;
+    font-size: 120%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+
 /* Profile Page*/
 
 .profile_content {
@@ -171,6 +181,19 @@ img {
     font-size: 150%;
 }
 
+
+/* user profiles */
+
+div.profile_content {
+    background-color: #e6e2dc;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 20px;
+    color: #4d3247;
+    font-size: 100%;
+}
+
+
 /* Buttons */
 
 .button-container {
@@ -192,6 +215,7 @@ button {
     padding: 1em;
     margin: 1em;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    font-size: 130%;
 }
 
 button.delete {
@@ -203,9 +227,15 @@ button.edit {
 }
 
 button:hover {
-    letter-spacing: .05em;
+    letter-spacing: .08em;
     transform: scale(1.1);
     filter: brightness(120%);
+}
+
+#add-pet-button {
+    background-color: transparent;
+    text-align: center;
+    width: 100%;
 }
 
 
@@ -284,6 +314,12 @@ textarea {
     font-weight: 600;
 }
 
+fieldset {
+    border-radius: 10px;
+    border: 2px solid #4d3247;
+}
+
+
 /* drag and drop */
 
 .image-upload {
@@ -342,7 +378,6 @@ textarea {
     display: flex;
     flex-direction: column;
 }
-
 
 .photo-icon {
     position: absolute;

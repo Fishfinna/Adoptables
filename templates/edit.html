@@ -1,48 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+ {% extends "base.html"%} {% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/stylesheet/style.css">
-    <script defer src="/static/scripts/drag_drop.js"></script>
-    <title>Adoptables Info Page</title>
-</head>
 
-<body>
-    <nav>
-        <div class="nav-buttons">
-            <div class="nav-buttons">
-                <a href="/">HOME</a>
-                <a href="/info">LEARN MORE</a>
-                <a href="/add">ADD A PET</a>
-                <a href="/signup">SIGNUP</a>
-                <a href="/signup">LOGIN</a>
+<h1>Edit A Pet For Adoption</h1>
+
+<main class="pet-form">
+
+    <form method="post" action="/edit/{{pet.id}}/put" enctype="multipart/form-data">
+        <fieldset>
+
+            <legend class="form-inner">Pet Information</legend>
+            <div>
+                <label for="pet_name">Pet name:</label>
+                <input type="text" placeholder="name" value="{{pet.name}}" name="pet_name">
+
+                <label for="pet_gender">Gender:</label>
+                <input type="text" placeholder="gender" value="{{pet.gender}}" name="pet_gender">
             </div>
-        </div>
-    </nav>
 
-
-    <h1>Edit A Pet For Adoption</h1>
-
-    <main class="pet-form">
-
-        <form method="post" action="/edit/{{pet.id}}/put" enctype="multipart/form-data">
-            <fieldset>
-
-                <legend class="form-inner">Pet Information</legend>
-                <div>
-                    <label for="pet_name">Pet name:</label>
-                    <input type="text" placeholder="name" value="{{pet.name}}" name="pet_name">
-
-                    <label for="pet_gender">Gender:</label>
-                    <input type="text" placeholder="gender" value="{{pet.gender}}" name="pet_gender">
-                </div>
-
-                <div>
-                    <label for="pet_species">Species:</label>
-                    <select name="species" name="pet_species">
+            <div>
+                <label for="pet_species">Species:</label>
+                <select name="species" name="pet_species">
                         <option value="dog" {% if pet.species=="dog" %}selected{% endif %}>Dog</option>
                         <option value="cat" {% if pet.species=="cat" %}selected{% endif %}>Cat</option>
                         <option value="rodent" {% if pet.species=="rodent" %}selected{% endif %}>Rodent</option>
@@ -50,46 +27,44 @@
                         <option value="reptile" {% if pet.species=="reptile" %}selected {% endif %}>Reptile</option>
                         <option value="other" {% if pet.species=="other" %}selected {% endif %}>Other</option>
                     </select>
-                </div>
+            </div>
 
-                <div>
-                    <label for="pet_age">Age:</label>
-                    <input type="text" placeholder="age" value="{{pet.age}}" name="pet_age">
-                </div>
+            <div>
+                <label for="pet_age">Age:</label>
+                <input type="text" placeholder="age" value="{{pet.age}}" name="pet_age">
+            </div>
+
+            <br>
+
+            <div>
+                <label for="pet_description">Description:</label>
+                <textarea placeholder="description..." rows="10" name="pet_description">{{pet.description}}</textarea>
+            </div>
+
+            <div class="image-upload">
 
                 <br>
-
-                <div>
-                    <label for="pet_description">Description:</label>
-                    <textarea placeholder="description..." rows="10"
-                        name="pet_description">{{pet.description}}</textarea>
-                </div>
-
-                <div class="image-upload">
-
-                    <br>
-                    <label for="myfile">Upload a New Image:</label>
-                    <div class="drop-zone">
-                        <img class="photo-icon"
-                            src="https://www.freeiconspng.com/thumbs/camera-icon/camera-icon-21.png">
-                        <span class="drop-zone__prompt">Upload a New Image <br> (leave empty to keep the original
+                <label for="myfile">Upload a New Image:</label>
+                <div class="drop-zone">
+                    <img class="photo-icon" src="https://www.freeiconspng.com/thumbs/camera-icon/camera-icon-21.png">
+                    <span class="drop-zone__prompt">Upload a New Image <br> (leave empty to keep the original
                             image)</span>
 
-                        <input type="file" name="myfile" class="drop-zone__input">
-                    </div>
+                    <input type="file" name="myfile" class="drop-zone__input">
                 </div>
+            </div>
 
 
 
 
-            </fieldset>
-            <button type="submit">Submit</button>
+        </fieldset>
+        <button type="submit">Submit</button>
 
-        </form>
+    </form>
 
-        </script>
+    </script>
 
-    </main>
+</main>
 </body>
 
 </html>
