@@ -8,8 +8,11 @@ class User():
             raise ValueError
 
         self.username = username
-        self.key = Fernet.generate_key()
-        self.password = Fernet(self.key).encrypt(password.encode())
+
+        file = open('static/key.key', 'rb')
+        key = file.read()
+        self.password = Fernet(key).encrypt(password.encode())
+        file.close()
 
         # Return account information
         self.account = {"username": self.username, "password": self.password}
@@ -24,6 +27,11 @@ class User():
 
         if username == self.username:
             # this decodes the password and checks it
-            decoded_password = Fernet(self.key).decrypt(self.password).decode()
+            file = open('static/key.key', 'rb')
+            key = file.read()
+            decoded_password = Fernet(key).decrypt(
+                self.password).decode()
+            file.close()
             if password == decoded_password:
                 return True
+        return False
