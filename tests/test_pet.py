@@ -14,6 +14,7 @@ def data():
         "this is the description",
         "filename.jpg",
         "101",
+        "shelter-name"
     ]
 
 
@@ -31,6 +32,7 @@ def test_init_errors():
             "this is the description",
             "filename.jpg",
             "101",
+            "shelter-name"
         )
 
     with pytest.raises(TypeError):
@@ -44,6 +46,7 @@ def test_init_errors():
             "this is the description",
             "filename.jpg",
             "101",
+            "shelter-name"
         )
 
     with pytest.raises(ValueError):
@@ -57,6 +60,7 @@ def test_init_errors():
             "this is the description",
             "filename.jpg",
             "101",
+            "shelter-name"
         )
 
 
@@ -88,4 +92,5 @@ def test_to_dict(data):
         "age": f"{pet.age}",
         "description": f"{pet.description}",
         "image": f"{pet.image}",
+        "shelter_username": f"{pet.shelter_username}"
     }

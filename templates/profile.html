@@ -17,7 +17,7 @@
 
     <div class="pet-container">
 
-        <h3>{{ pet.name }}</h3>
+        <h1>{{ pet.name }}</h1>
         <a href="/adopt/{{pet.id}}">
             <img src=" {{ url_for( 'file', filename=pet.image ) }}">
         </a>

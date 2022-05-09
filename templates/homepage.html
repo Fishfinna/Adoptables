@@ -9,14 +9,14 @@
     <a class="pet-container" href="/adopt/{{pet.id}}">
 
 
-        <h3>{{ pet.name }}</h3>
+        <h1>{{ pet.name }}</h1>
 
         <img src=" {{ url_for( 'file', filename=pet.image ) }}">
 
         <div class="animal-info ">
 
             <p>Species: {{pet.species}} </p>
-            <p> Age: {{pet.age}} </p>
+            <p>Age: {{pet.age}}</p>
             <p>Gender: {{pet.gender}}</p>
 
         </div>

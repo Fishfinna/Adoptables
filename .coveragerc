@@ -1,2 +1,2 @@
 [run]
-omit = */webapp.py
+omit = *tests*

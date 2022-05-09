@@ -64,8 +64,11 @@ def adopt_info(id):
 @app.route("/remove/<id>", methods=["GET", "POST"])
 def delete_pet(id):
     """this will delete pets and redirect to home"""
-    mongo.db.pets.delete_one({"_id": ObjectId(id)})
-    return redirect("/")
+    try:
+        mongo.db.pets.delete_one({"_id": ObjectId(id)})
+        return redirect("/")
+    except:
+        return "404: pet not found", 404
 
 
 @app.route("/add")
@@ -160,7 +163,7 @@ def manage_signup():
         "postal": request.form.get("zipcode"),
         "phone": request.form.get("phone"),
     }
-    if len(mongo.db.users.find_one({"username": request.form.get("username")})) == 0:
+    if mongo.db.users.find_one({"username": request.form.get("username")}):
         return "error: username is taken", 404
 
     user_account = User(*user_data.values())
@@ -175,12 +178,13 @@ def manage_signup():
 
 @app.route("/profile")
 def profile():
-    if session["user"]:
+    try:
+        user = session["user"]
         pets = [Pet(*x.values())
                 for x in mongo.db.pets.find({"shelter_username": session["user"].get("username")})]
         return render_template("profile.html", profile=session["user"], session=session, pets=pets)
-    else:
-        return "", 404
+    except Exception:
+        return "error 404: can not find profile", 404
 
 
 @app.route("/login")

@@ -29,7 +29,6 @@ h1 {
 }
 
 h3 {
-    text-align: left;
     padding-left: 1em;
     font-size: 3em;
 }
@@ -50,26 +49,23 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    position: sticky;
     justify-content: flex-end;
+    position: sticky;
     top: 0;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .nav-buttons a {
+    color: #ecedeb;
+    margin-right: 1.5em;
     background-color: #a57573;
     border-radius: 10px;
     padding: 10px;
-    margin: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .nav-buttons a:hover {
     background-color: #9b5263;
-}
-
-.nav-buttons>a {
-    color: #ecedeb;
 }
 
 
@@ -89,6 +85,8 @@ main>* {
 }
 
 .animal-info {
+    max-width: 100%;
+    margin: 5%;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -100,11 +98,13 @@ main>* {
 
 .animal-info * {
     font-weight: bold;
-    padding: 2em;
-    font-size: 120%;
+    padding: .3em;
+    font-size: 1.5em;
 }
 
 .pet-container {
+    width: 30em;
+    max-width: 80vw;
     margin: 2%;
     display: flex;
     flex-direction: column;
@@ -118,6 +118,7 @@ main>* {
 }
 
 img {
+    max-width: 70vw;
     margin: 1em;
     transition: all .4s ease-in-out;
     width: 20em;
