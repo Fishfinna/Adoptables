@@ -42,6 +42,7 @@ def file(filename):
 @app.route("/")
 def homepage():
     """home page"""
+
     pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
     return render_template("homepage.html", pets=list(pets), session=session)
 
@@ -65,8 +66,12 @@ def adopt_info(id):
 def delete_pet(id):
     """this will delete pets and redirect to home"""
     try:
-        mongo.db.pets.delete_one({"_id": ObjectId(id)})
-        return redirect("/")
+        pet = mongo.db.pets.find_one({"_id": ObjectId(id)})
+        if session["user"].get("username") == pet.get("shelter_username"):
+            mongo.db.pets.delete_one({"_id": ObjectId(id)})
+            return redirect("/profile")
+        else:
+            return "404: invalid user permissions", 404
     except:
         return "404: pet not found", 404
 
@@ -100,7 +105,7 @@ def pet_manage_adder():
             }
         )
 
-    return redirect("/")
+    return redirect("/profile")
 
 
 @app.route("/edit/<id>")
@@ -142,7 +147,7 @@ def pet_manage_edit(id):
 
     mongo.db.pets.update_one(selected, update_selected)
 
-    return redirect("/")
+    return redirect("/profile")
 
 
 @app.route("/signup")
@@ -211,7 +216,7 @@ def login_manage():
 @app.route("/logout")
 def logout():
     session["user"] = None
-    return redirect("/")
+    return redirect("/profile")
 
 
 if __name__ == "__main__":
