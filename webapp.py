@@ -56,7 +56,7 @@ def infopage():
 @app.route("/adopt/<string:id>")
 def adopt_info(id):
     """idividual pet page"""
-    selected = mongo.db.pets.find_one({"_id": ObjectId(id)})
+    selected = mongo.db.pets.find_one_or_404({"_id": ObjectId(id)})
     pet = Pet(*selected.values())
     profile = mongo.db.users.find_one({"username": pet.shelter_username})
     return render_template("pet.html", pet=pet, profile=profile, session=session)
@@ -66,7 +66,7 @@ def adopt_info(id):
 def delete_pet(id):
     """this will delete pets and redirect to home"""
     try:
-        pet = mongo.db.pets.find_one({"_id": ObjectId(id)})
+        pet = mongo.db.pets.find_one_or_404({"_id": ObjectId(id)})
         if session["user"].get("username") == pet.get("shelter_username"):
             mongo.db.pets.delete_one({"_id": ObjectId(id)})
             return redirect("/profile")
@@ -101,7 +101,7 @@ def pet_manage_adder():
                 )
                 + pet_photo.filename,
                 "data": pet_photo.read(),
-                "shelter_username":  session["user"].get("username"),
+                "shelter_username": session["user"].get("username"),
             }
         )
 
@@ -185,9 +185,15 @@ def manage_signup():
 def profile():
     try:
         user = session["user"]
-        pets = [Pet(*x.values())
-                for x in mongo.db.pets.find({"shelter_username": session["user"].get("username")})]
-        return render_template("profile.html", profile=session["user"], session=session, pets=pets)
+        pets = [
+            Pet(*x.values())
+            for x in mongo.db.pets.find(
+                {"shelter_username": session["user"].get("username")}
+            )
+        ]
+        return render_template(
+            "profile.html", profile=session["user"], session=session, pets=pets
+        )
     except Exception:
         return "error 404: can not find profile", 404
 
@@ -199,24 +205,25 @@ def login():
 
 @app.route("/login/manage", methods=["POST"])
 def login_manage():
-    selected = mongo.db.users.find_one(
-        {"username": request.form.get("username")})
-    if selected:
-        account = User(*list(selected.values())[1:])
+    try:
+        selected = mongo.db.users.find_one(
+            {"username": request.form.get("username")})
+        if selected:
+            account = User(*list(selected.values())[1:])
 
-        if account.check_password(
-            request.form.get("username"), request.form.get("password")
-        ):
-            session["user"] = account.get_account()
-            return redirect("/profile")
-
-    return "account not found", 404
+            if account.check_password(
+                request.form.get("username"), request.form.get("password")
+            ):
+                session["user"] = account.get_account()
+                return redirect("/profile")
+    finally:
+        return "account not found", 404
 
 
 @app.route("/logout")
 def logout():
     session["user"] = None
-    return redirect("/profile")
+    return redirect("/")
 
 
 if __name__ == "__main__":

@@ -48,8 +48,7 @@ class User:
             # this decodes the password and checks it
             file = open("static/key.key", "rb")
             key = file.read()
-            decoded_password = Fernet(key).decrypt(
-                self.encoded_password).decode()
+            decoded_password = Fernet(key).decrypt(self.encoded_password).decode()
             file.close()
             if password == decoded_password:
                 return True
