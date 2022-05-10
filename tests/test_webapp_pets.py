@@ -27,9 +27,10 @@ def test_add_pet(client):
     )
 
     assert request.status_code == 302
+
+    # clean up
     webapp.mongo.db.pets.delete_one(
-        {"name": "", "gender": "", "species": "dog", "age": ""}
-    )
+        {"name": "", "gender": "", "species": "dog"})
 
 
 def test_edit_pet(client, pet):
@@ -86,16 +87,17 @@ def test_images(client, pet):
         {"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
 
 
-def test_delete(client, pet):
-    pet_id = pet.get("_id")
-
+def test_delete_error(client):
     # make sure errors are being thrown here
     assert client.get("/remove/IM-BROKEN!!!!").status_code == 404
+
+
+def test_delete(client, pet):
+    pet_id = pet.get("_id")
 
     # make sure the pet is there to start
     assert client.get(f"/adopt/{pet_id}").status_code == 200
 
-    # assert
     # check that the user can delete the added pet
     assert client.get(f"/remove/{pet_id}", subdomain="blue").status_code == 302
 

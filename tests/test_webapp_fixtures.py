@@ -15,7 +15,15 @@ def client():
 
     with client.session_transaction(subdomain="blue") as session:
         # assume that a user is signed in
-        session["user"] = {"username": "name", "password": b"password"}
+        session["user"] = {"username": "name",
+                           "password": b"Z0FBQUFBQmllYmRPUEN0VkE5eTJiTGthTlBVekFpZUUyZGVrRU1ZUmxxa3llTWJrTTRsMWJjT1B5R1dKc0hsQ2FheE42SnhvNXM2ZWhkZEJuc3p1VUR4RDBCM0I5em0tS0E9PQ==",
+                           "shelter_name": "sad place",
+                           "email": "name@my.bcit.ca",
+                           "street": "123Rd",
+                           "city": "TOWN",
+                           "province": "BC",
+                           "postal": "V0P  2o2",
+                           "phone": "123 123 123"}
 
     return client
 

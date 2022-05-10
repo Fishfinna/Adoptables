@@ -8,6 +8,11 @@
         <p>Address: {{profile.street}}, {{profile.city}}, {{profile.province}}. {{profile.postal}}</p>
 
     </div>
+    <div>
+        <a href="/profile/edit"><button>Edit</button></a>
+        <a href="/profile/delete"><button class="delete">Delete</button></a>
+    </div>
+
 </div>
 
 
@@ -24,7 +29,7 @@
         <div class="animal-info ">
 
             <p>Species: {{pet.species}} </p>
-            <p> Age: {{pet.age}} </p>
+            <p>Age: {{pet.age}} </p>
             <p>Gender: {{pet.gender}}</p>
 
 
@@ -32,7 +37,7 @@
         <div class="button-container ">
 
             <a href="/remove/{{pet.id}} ">
-                <button class="delete ">Delete</button>
+                <button class="delete ">Delete Account</button>
             </a>
 
             <a href="/edit/{{pet.id}} ">

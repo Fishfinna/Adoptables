@@ -8,31 +8,6 @@
     font-size: 2em;
 }
 
-/* Links */
-a:link {
-    color: tomato;
-    background-color: transparent;
-    text-decoration: none;
-}
-
-a:visited {
-    color: pink;
-    background-color: transparent;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #a57573;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-a:active {
-    color: #4d3247;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
 /* basic text definitions */
 
 html {
@@ -456,8 +431,6 @@ form.email button {
 
 #main-image {
     align-self: center;
-    width: 50vw;
-    height: auto;
 }
 
 #go-back-button {
