@@ -1,0 +1,51 @@
+{% extends "base.html"%} {% block content %}
+<div class="profile_content">
+    <div class=profile_div>
+        <h2>Shelter Name: {{profile.shelter_name}}</h2>
+        <p>Account Username: {{profile.username}}</p>
+        <p>Email: {{profile.email}}</p>
+        <p>Phone Number: {{profile.phone}}</p>
+        <p>Address: {{profile.street}}, {{profile.city}}, {{profile.province}}. {{profile.postal}}</p>
+
+    </div>
+</div>
+
+
+<h3>Listed Pets:</h3>
+<main class="pet-list">
+    <a href="/add" id="add-pet-button"><button> <b>+</b> ADD A PET</button></a> {% for pet in pets %}
+
+    <div class="pet-container">
+
+        <h1>{{ pet.name }}</h1>
+        <a href="/adopt/{{pet.id}}">
+            <img src=" {{ url_for( 'file', filename=pet.image ) }}">
+        </a>
+        <div class="animal-info ">
+
+            <p>Species: {{pet.species}} </p>
+            <p> Age: {{pet.age}} </p>
+            <p>Gender: {{pet.gender}}</p>
+
+        </div>
+        <div class="button-container ">
+
+            <a href="/remove/{{pet.id}} ">
+                <button class="delete ">Delete</button>
+            </a>
+
+            <a href="/edit/{{pet.id}} ">
+                <button class="edit ">Edit</button>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    </div>
+
+    {% endfor %}
+
+</main>
+{% endblock %}

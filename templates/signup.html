@@ -1,0 +1,56 @@
+ {% extends "base.html"%} {% block content %}
+
+<h1>Sign Up</h1>
+
+<main class="signup-page">
+
+    <form action="/signup/accounts" method="post">
+        <div class="container">
+            <fieldset>
+
+                <legend class="form-inner">Create an Account</legend>
+
+                <label for="shelter name">Shelter Name</label>
+                <input type="text" placeholder="Enter your name" name="shelter name" required>
+
+                <label for="email">Email</label>
+                <input type="email" placeholder="Enter Email" name="email">
+
+                <label for="phone">Phone Number</label>
+                <input type="text" placeholder="Enter Phone Number" name="phone">
+                <hr>
+
+
+                <label for="zipcode">Street</label>
+                <input type="text" class="form-control" name="street" placeholder="Street">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name="city" placeholder="City">
+                <label for="province">Province</label>
+                <input type="text" class="form-control" name="province" placeholder="Province">
+
+                <label for="zipcode">Postal Code</label>
+                <input type="text" placeholder="Enter your Postal Code" name="zipcode" required>
+                <hr>
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label for="psw">Password</label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <label for="psw-repeat">Repeat Password</label>
+                <input type="password" placeholder="Repeat Password" name="password-required" required>
+
+
+
+                <div class="clearfix">
+                    <a href="/"><button type="button" class="delete">Cancel</button></a>
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+        </div>
+        </fieldset>
+    </form>
+
+
+</main>
+
+{% endblock %}

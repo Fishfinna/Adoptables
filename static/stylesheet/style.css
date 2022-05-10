@@ -11,6 +11,7 @@ html {
 }
 
 pre {
+    font-size: 1.6em;
     font-family: 'Dosis';
 }
 
@@ -28,8 +29,12 @@ h1 {
     font-size: 4em;
 }
 
+h2 {
+    font-size: 1.8em;
+}
+
 h3 {
-    text-align: center;
+    padding-left: 1em;
     font-size: 3em;
 }
 
@@ -49,26 +54,23 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    position: sticky;
     justify-content: flex-end;
+    position: sticky;
     top: 0;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .nav-buttons a {
+    color: #ecedeb;
+    margin-right: 1.5em;
     background-color: #a57573;
     border-radius: 10px;
     padding: 10px;
-    margin: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .nav-buttons a:hover {
     background-color: #9b5263;
-}
-
-.nav-buttons>a {
-    color: #ecedeb;
 }
 
 
@@ -88,6 +90,8 @@ main>* {
 }
 
 .animal-info {
+    max-width: 100%;
+    margin: 5%;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -99,11 +103,14 @@ main>* {
 
 .animal-info * {
     font-weight: bold;
-    padding: 2em;
-    font-size: 120%;
+    padding: .3em;
+    font-size: 1.5em;
+    margin: 1em;
 }
 
 .pet-container {
+    width: 30em;
+    max-width: 80vw;
     margin: 2%;
     display: flex;
     flex-direction: column;
@@ -117,6 +124,7 @@ main>* {
 }
 
 img {
+    max-width: 70vw;
     margin: 1em;
     transition: all .4s ease-in-out;
     width: 20em;
@@ -148,6 +156,50 @@ img {
     font-size: 150%;
 }
 
+.pet-contact-info {
+    background-color: #e0cec4;
+    padding: 2%;
+    font-size: 120%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+
+/* Profile Page*/
+
+.profile_content {
+    margin: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.profile_content:hover img {
+    transform: scale(1.08);
+}
+
+.profile_body {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile_div {
+    font-size: 150%;
+}
+
+
+/* user profiles */
+
+div.profile_content {
+    background-color: #e6e2dc;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 20px;
+    color: #4d3247;
+    font-size: 100%;
+}
+
 
 /* Buttons */
 
@@ -161,15 +213,17 @@ img {
 }
 
 button {
-    transition: all .1s ease-in-out;
+    align-self: left;
+    transition: all .3s ease-in-out;
     color: #ecedeb;
     margin-left: 1em;
     border: none;
     background-color: #a57573;
     border-radius: 10px;
-    padding: 1em;
-    margin: 1em;
+    padding: .8em;
+    margin: .5em;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    font-size: 120%;
 }
 
 button.delete {
@@ -181,9 +235,16 @@ button.edit {
 }
 
 button:hover {
-    letter-spacing: .05em;
+    box-shadow: rgba(193, 184, 184, 0.1) 2px 4px 5px 2px, rgba(211, 201, 201, 0.06) 2px 4px 5px 2px;
+    letter-spacing: .08em;
     transform: scale(1.1);
     filter: brightness(120%);
+}
+
+#add-pet-button {
+    background-color: transparent;
+    text-align: center;
+    width: 100%;
 }
 
 
@@ -214,6 +275,9 @@ label {
 }
 
 input[type=text],
+input[type=email],
+input[type=tel],
+input[type=password],
 select,
 textarea {
     font-size: 120%;
@@ -228,6 +292,40 @@ textarea {
     margin-top: 6px;
     margin-bottom: 16px;
     resize: vertical;
+}
+
+.address-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.address-form * {
+    align-items: center;
+    justify-content: center;
+    font-size: 120%;
+    color: #4d3247;
+    font-weight: 600;
+    padding: 12px;
+    border: 2px solid rgb(189, 178, 178);
+    background-color: #ecedeb;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.address-form *:first-child {
+    font-size: 120%;
+    color: #4d3247;
+    font-weight: 600;
+}
+
+fieldset {
+    border-radius: 10px;
+    border: 2px solid #4d3247;
 }
 
 
@@ -284,10 +382,55 @@ textarea {
     text-align: center;
 }
 
+.profile_body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
 .photo-icon {
     position: absolute;
     box-shadow: none;
     max-width: 200px;
     max-height: 200px;
     filter: opacity(5%);
+}
+
+
+/* pet contact details */
+
+form.email {
+    max-width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form.email button {
+    align-self: flex-start;
+}
+
+#pet-basic-info {
+    background-color: #E0CEC4;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    flex: wrap;
+    align-self: center;
+    justify-content: space-around;
+    font-size: larger;
+    width: 50vw;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+#main-image {
+    align-self: center;
+    width: 50vw;
+    height: auto;
+}
+
+#go-back-button {
+    align-self: flex-start;
+    max-width: 30%;
+    margin: 5%;
 }

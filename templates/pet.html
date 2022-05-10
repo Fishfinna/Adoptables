@@ -1,47 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+ {% extends "base.html"%} {% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/stylesheet/style.css">
-    <title>Adoptables Info Page</title>
-</head>
+<h1>Hello! my name is {{pet.name}}!</h1>
 
-<body>
-    <nav>
-        <div class="nav-buttons">
-            <a href="/">HOME</a>
-            <a href="/info">LEARN MORE</a>
-            <a href="/add"> ADD A PET</a>
+<main class="pet-page">
+    <div class="profile_body">
+        <img id="main-image" src=" {{ url_for( 'file', filename=pet.image ) }}">
+
+        <br>
+        <div id="pet-basic-info">
+            <p>Species: {{pet.species}}</p>
+            <p>Age: {{pet.age}}</p>
+            <p>Gender: {{pet.gender}}</p>
         </div>
-    </nav>
+        <h2>Description</h2>
 
-    <h1>Hello! my name is {{pet.name}}!</h1>
 
-    <main class="pet-page">
-        <div>
-            <div class="div-pet-page">
-                <img src=" {{ url_for( 'file', filename=pet.image ) }}">
+
+        <pre>{{pet.description}}</pre>
+
+        <h2>
+            Shelter Contact Information
+        </h2>
+        <div class="pet-contact-info">
+            <h2>Shelter Name: {{profile.shelter_name}}</h2>
+            <p>Email: {{profile.email}}</p>
+            <p>Phone Number: {{profile.phone}}</p>
+            <p>Address: {{profile.street}}, {{profile.city}}, {{profile.province}}. {{profile.postal}}</p>
+
+            <h2>Email Now</h2>
+
+            <form class="email" method="post" action="./email">
+
                 <div>
-                    <p>Species: {{pet.species}}</p>
-                    <p>Age: {{pet.age}}</p>
-                    <p>Gender: {{pet.gender}}</p>
+                    <label for="Email" class="fcf-label">Your email address</label>
+                    <input type="email" id="Email" name="email" required>
+
+                    <label for="Subject">Subject</label>
+                    <input type="text" id="subject" name="subject" class="fcf-form-control" required>
+
+
+                    <label for="message" class="fcf-label">Your message</label>
+                    <textarea id="message" name="message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+
                 </div>
-            </div>
-            <br>
-            <h2>
-                Shelter Contact Information
-            </h2>
-            <div class="animal-info">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum facilis eius assumenda laboriosam nostrum delectus unde deserunt culpa repudiandae perferendis, quos nam porro. Rerum minima veniam quisquam modi natus?
-            </div>
-            <h2>Description</h2>
-            <pre>{{pet.description}}</pre>
+                <button type="submit">Send message</button>
+
+            </form>
         </div>
-
-    </main>
-</body>
-
-</html>
+        <button id="go-back-button" onclick="history.back()">Go Back</button>
+    </div>
+</main>
+{% endblock %}

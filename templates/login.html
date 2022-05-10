@@ -1,0 +1,24 @@
+ {% extends "base.html"%} {% block content %}
+
+<h1>
+    Login
+</h1>
+<main class="login-form">
+    <div class="profile_content">
+        <form action="/login/manage" method="post">
+            <div class="container">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+
+                <a href="/"><button type="button" class="delete">Cancel</button></a>
+                <button type="submit" class="login">Login In</button>
+                <a href="/signup"><button type="button" class="cancelbtn">Create An Account</button></a>
+            </div>
+    </div>
+
+</main>
+{% endblock %}
