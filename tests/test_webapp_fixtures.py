@@ -4,7 +4,7 @@ from flask_pymongo import PyMongo
 from flask import session
 from bson.objectid import ObjectId
 
-# fixtue data
+# fixture data
 
 
 @pytest.fixture
