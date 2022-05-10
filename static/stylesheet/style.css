@@ -2,6 +2,37 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dosis&display=swap');
 
+/* Fonts */
+.about_us {
+    text-indent: .5em;
+    font-size: 2em;
+}
+
+/* Links */
+a:link {
+    color: tomato;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a57573;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #4d3247;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
 /* basic text definitions */
 
 html {
@@ -26,7 +57,7 @@ main {
 
 h1 {
     text-align: center;
-    font-size: 4em;
+    font-size: 6em;
 }
 
 h2 {
@@ -50,7 +81,7 @@ a {
 nav {
     z-index: 999;
     background-color: #4d3247;
-    padding: 20px;
+    padding: 30px;
     display: flex;
     flex-direction: row;
     align-items: center;
