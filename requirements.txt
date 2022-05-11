@@ -3,3 +3,4 @@ requests
 flask_pymongo
 pytest
 flask_mail
+cryptography

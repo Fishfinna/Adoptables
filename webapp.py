@@ -1,5 +1,6 @@
 from flask import (
     Flask,
+    flash,
     request,
     session,
     jsonify,
@@ -169,7 +170,7 @@ def manage_signup():
         "phone": request.form.get("phone"),
     }
     if mongo.db.users.find_one({"username": request.form.get("username")}):
-        return "error: username is taken", 404
+        return render_template("invalid_username.html"), 404
 
     user_account = User(*user_data.values())
     mongo.db.users.insert_one(user_account.get_account())
@@ -217,12 +218,59 @@ def login_manage():
                 session["user"] = account.get_account()
                 return redirect("/profile")
     finally:
-        return "account not found", 404
+        return render_template("invalid_account.html"), 404
 
 
 @app.route("/logout")
 def logout():
     session["user"] = None
+    return redirect("/")
+
+
+@app.route("/profile/edit", methods=["GET", "POST"])
+def edit_user():
+    """edit the user account"""
+    if request.method == "GET":
+        return render_template("edit_user.html", user=session["user"])
+
+    elif request.method == "POST":
+        selected = mongo.db.users.find_one_or_404(
+            {"username": session["user"].get("username")})
+
+        update_selected = update_selected = {
+            "$set": {
+                "username": session["user"].get("username"),
+                "password": session["user"].get("password"),
+                "shelter_name": request.form.get("shelter name"),
+                "email": request.form.get("email"),
+                "street": request.form.get("street"),
+                "city": request.form.get("city"),
+                "province": request.form.get("province"),
+                "postal": request.form.get("zipcode"),
+                "phone": request.form.get("phone"),
+            }}
+
+        mongo.db.users.update_one(selected, update_selected)
+
+        selected = mongo.db.users.find_one(
+            {"username": session["user"].get("username")})
+        account = User(*list(selected.values())[1:])
+
+        session["user"] = account.get_account()
+
+        return redirect("/profile")
+
+
+@ app.route("/profile/delete")
+def delete_user():
+
+    mongo.db.pets.delete_many(
+        {"shelter_username": session["user"].get("username")})
+
+    mongo.db.users.delete_one(
+        {"username": session["user"].get("username")})
+    session["user"] = None
+
     return redirect("/")
 
 

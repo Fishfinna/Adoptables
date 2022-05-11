@@ -39,8 +39,9 @@ def test_user_edit_page(client):
     assert client.get("/profile/edit").status_code == 200
     assert b"<body>" in client.get("/profile/edit").data
 
-    # this will make sure client data is on the page automatically
-    assert b"value=name" in client.get("/profile/edit", subdomain="blue").data
+    # this will make sure client values are set on the page automatically
+    assert b'value=' in client.get(
+        "/profile/edit", subdomain="blue").data
 
 
 def test_info(client):

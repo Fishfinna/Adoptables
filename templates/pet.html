@@ -1,4 +1,4 @@
- {% extends "base.html"%} {% block content %}
+{% extends "base.html"%} {% block content %}
 
 <h1>Hello! my name is {{pet.name}}!</h1>
 
@@ -11,6 +11,7 @@
             <p>Species: {{pet.species}}</p>
             <p>Age: {{pet.age}}</p>
             <p>Gender: {{pet.gender}}</p>
+
         </div>
         <h2>Description</h2>
 
@@ -40,7 +41,8 @@
 
 
                     <label for="message" class="fcf-label">Your message</label>
-                    <textarea id="message" name="message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+                    <textarea id="message" name="message" class="fcf-form-control" rows="6" maxlength="3000"
+                        required></textarea>
 
                 </div>
                 <button type="submit">Send message</button>
