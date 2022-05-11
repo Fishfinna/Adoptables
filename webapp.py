@@ -1,5 +1,6 @@
 from flask import (
     Flask,
+    flash,
     request,
     session,
     jsonify,
@@ -169,7 +170,7 @@ def manage_signup():
         "phone": request.form.get("phone"),
     }
     if mongo.db.users.find_one({"username": request.form.get("username")}):
-        return "error: username is taken", 404
+        return render_template("invalid_username.html"), 404
 
     user_account = User(*user_data.values())
     mongo.db.users.insert_one(user_account.get_account())
@@ -217,7 +218,7 @@ def login_manage():
                 session["user"] = account.get_account()
                 return redirect("/profile")
     finally:
-        return "account not found", 404
+        return render_template("invalid_account.html"), 404
 
 
 @app.route("/logout")
