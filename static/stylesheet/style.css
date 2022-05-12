@@ -2,14 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dosis&display=swap');
 
-/* Fonts */
-
-.about_us {
-    text-indent: .5em;
-    font-size: 2em;
-}
-
-
 /* basic text definitions */
 
 html {
@@ -170,6 +162,10 @@ img {
     font-size: 120%;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.about_us {
+    font-size: 2em;
 }
 
 
@@ -334,6 +330,24 @@ textarea {
 fieldset {
     border-radius: 10px;
     border: 2px solid #4d3247;
+}
+
+.alert {
+    padding: 20px;
+    background-color: rgb(217, 99, 99);
+    /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
 }
 
 

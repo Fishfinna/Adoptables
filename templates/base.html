@@ -12,16 +12,13 @@
 </head>
 
 <body>
-
-    <nav>
-        <div class="nav-buttons">
+    <div>
+        <nav>
             <div class="nav-buttons">
 
 
                 <a href="/"><i class="fa-solid fa-house"></i></a>
                 <a href="/info">LEARN MORE</a> {% if session["user"] %}
-
-
                 <a href="/profile">VIEW PROFILE</a>
                 <a href="/logout">LOG OUT</a> {% else %}
 
@@ -29,8 +26,16 @@
                 <a href="/login">LOGIN</a> {% endif %}
 
             </div>
-        </div>
+    </div>
     </nav>
+
+    {% if error %}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> {{error}}
+    </div>
+    {% endif %}
+
+    </div>
 
     {% block content %}{% endblock %}
 

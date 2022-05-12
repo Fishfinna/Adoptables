@@ -43,11 +43,9 @@ def file(filename):
 @app.route("/")
 def homepage():
     """home page"""
-    try:
-        pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
-        return render_template("homepage.html", pets=list(pets), session=session)
-    except:
-        return " ", 404
+
+    pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
+    return render_template("homepage.html", pets=list(pets), session=session)
 
 
 @app.route("/info")
@@ -155,17 +153,16 @@ def pet_manage_edit(id):
 
 @app.route("/signup")
 def signup():
-    """
-    this will log out the user when they go to the log in screen
-    """
+    """sets up the sign up page"""
     try:
         return render_template("signup.html")
-    except:
-        return "", 404
+    except Exception:
+        return render_template("404.html"), 404
 
 
 @app.route("/signup/accounts", methods=["POST"])
 def manage_signup():
+    """manages the sign up data"""
     user_data = {
         "username": request.form.get("username"),
         "password": request.form.get("password"),
@@ -178,7 +175,7 @@ def manage_signup():
         "phone": request.form.get("phone"),
     }
     if mongo.db.users.find_one({"username": request.form.get("username")}):
-        return render_template("invalid_username.html"), 404
+        return render_template("/signup.html", error="username is taken")
 
     user_account = User(*user_data.values())
     mongo.db.users.insert_one(user_account.get_account())
@@ -204,19 +201,12 @@ def profile():
             "profile.html", profile=session["user"], session=session, pets=pets
         )
     except Exception:
-        return "error 404: can not find profile", 404
+        return render_template("404.html", error="profile not found")
 
 
 @app.route("/login")
 def login():
-    """
-    this will log out the user when they go to the log in screen
-    """
-    try:
-        session["user"] = None
-        return render_template("login.html", session=session)
-    except:
-        return "", 404
+    return render_template("login.html", session=session)
 
 
 @app.route("/login/manage", methods=["POST"])
@@ -232,20 +222,15 @@ def login_manage():
             ):
                 session["user"] = account.get_account()
                 return redirect("/profile")
-        return render_template("invalid_account.html"), 404
+        return render_template("login.html", session=session, error="user can not be found")
     except:
-        return render_template("invalid_account.html"), 404
+        return render_template("login.html", session=session, error="user can not be found")
 
 
 @app.route("/logout")
 def logout():
-    """log the user out"""
-    if session["user"]:
-        # remove their session data
-        session["user"] = None
-        return redirect("/")
-    else:
-        return "", 404
+    session["user"] = None
+    return redirect("/")
 
 
 @app.route("/profile/edit", methods=["GET", "POST"])
@@ -284,9 +269,9 @@ def edit_user():
 
 @ app.route("/profile/delete")
 def delete_user():
-    """Delete a user and their listed pets from the application"""
+    """delete a user from the application"""
 
-    if session["user"]:
+    try:
         mongo.db.pets.delete_many(
             {"shelter_username": session["user"].get("username")})
 
@@ -295,8 +280,8 @@ def delete_user():
         session["user"] = None
 
         return redirect("/")
-    else:
-        return "", 404
+    except:
+        return render_template("404.html"), 404
 
 
 if __name__ == "__main__":
