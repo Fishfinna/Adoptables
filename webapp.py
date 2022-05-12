@@ -174,7 +174,7 @@ def pet_manage_edit(id):
 def signup():
     """sets up the sign up page"""
     try:
-        if session["error"]:
+        if session.get("error"):
             error = session["error"]
             session["error"] = None
             return render_template("signup.html", error=error)
