@@ -55,8 +55,6 @@ nav {
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    position: sticky;
-    top: 0;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
@@ -71,6 +69,12 @@ nav {
 
 .nav-buttons a:hover {
     background-color: #9b5263;
+}
+
+.nav-div {
+    z-index: 999;
+    position: sticky;
+    top: 0;
 }
 
 
@@ -334,6 +338,7 @@ fieldset {
 
 .alert {
     padding: 20px;
+    opacity: 0.9;
     background-color: rgb(217, 99, 99);
     /* Red */
     color: white;

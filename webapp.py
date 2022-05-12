@@ -174,7 +174,12 @@ def pet_manage_edit(id):
 def signup():
     """sets up the sign up page"""
     try:
-        return render_template("signup.html")
+        if session["error"]:
+            error = session["error"]
+            session["error"] = None
+            return render_template("signup.html", error=error)
+        else:
+            return render_template("signup.html")
     except Exception:
         return render_template("404.html"), 404
 
@@ -196,7 +201,8 @@ def manage_signup():
             "phone": request.form.get("phone"),
         }
         if mongo.db.users.find_one({"username": request.form.get("username")}):
-            return render_template("/signup.html", error="username is taken")
+            session["error"] = "username taken"
+            return redirect("/signup")
 
         user_account = User(*user_data.values())
         mongo.db.users.insert_one(user_account.get_account())
@@ -309,15 +315,16 @@ def edit_user():
 
 @ app.route("/profile/delete")
 def delete_user():
-    """delete a user from the application"""
+    """delete a user and their listed pets from the application"""
 
     try:
-        mongo.db.pets.delete_many(
-            {"shelter_username": session["user"].get("username")})
+        if session["user"]:
+            mongo.db.pets.delete_many(
+                {"shelter_username": session["user"].get("username")})
 
-        mongo.db.users.delete_one(
-            {"username": session["user"].get("username")})
-        session["user"] = None
+            mongo.db.users.delete_one(
+                {"username": session["user"].get("username")})
+            session["user"] = None
 
         return redirect("/")
     except:
