@@ -206,7 +206,12 @@ def profile():
 
 @app.route("/login")
 def login():
-    return render_template("login.html", session=session)
+    """let the user login"""
+    try:
+        session["user"] = None
+        return render_template("login.html", session=session)
+    except Exception:
+        return render_template("404.html"), 404
 
 
 @app.route("/login/manage", methods=["POST"])
