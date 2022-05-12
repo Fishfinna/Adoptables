@@ -1,5 +1,24 @@
  {% extends "base.html"%} {% block content %}
+ <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
+<script type="text/javascript">
+  emailjs.init('-oKFxPKF5UbnyXLbQ')
+</script>
+<script>
+    function sendEmail(params){
+        var tempParams ={
+            reply_to: document.getElementById('Email').value,
+            message: document.getElementById('message').value,
+            subject: document.getElementById('subject').value
+
+        };
+
+        emailjs.send('default_service', 'template_91h51j3', tempParams).then(function(res){
+            console.log("success",res.status)
+        })
+    }
+</script>
 <h1>Hello! my name is {{pet.name}}!</h1>
 
 <main class="pet-page">
@@ -43,14 +62,12 @@
                     <textarea id="message" name="message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
 
                 </div>
-                <button type="submit">Send message</button>
+                <button onclick= 'sendEmail()' type="submit">Send message</button>
 
             </form>
         </div>
         <button id="go-back-button" onclick="history.back()">Go Back</button>
     </div>
 </main>
-<script>
 
-</script>
 {% endblock %}
