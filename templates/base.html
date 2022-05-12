@@ -11,23 +11,29 @@
 </head>
 
 <body>
-
-    <nav>
-        <div class="nav-buttons">
+    <div>
+        <nav>
             <div class="nav-buttons">
-                <a href="/">HOME</a>
-                <a href="/info">LEARN MORE</a> {% if session["user"] %}
+                <div class="nav-buttons">
+                    <a href="/">HOME</a>
+                    <a href="/info">LEARN MORE</a> {% if session["user"] %}
 
 
-                <a href="/profile">VIEW PROFILE</a>
-                <a href="/logout">LOG OUT</a> {% else %}
+                    <a href="/profile">VIEW PROFILE</a>
+                    <a href="/logout">LOG OUT</a> {% else %}
 
-                <a href="/signup">SIGNUP AS A SHELTER</a>
-                <a href="/login">LOGIN</a> {% endif %}
+                    <a href="/signup">SIGNUP AS A SHELTER</a>
+                    <a href="/login">LOGIN</a> {% endif %}
 
+                </div>
             </div>
+        </nav>
+        {% if error %}
+        <div class="isa_error">
+            <i class="fa fa-times-circle"></i> Hello
         </div>
-    </nav>
+        {%endif%}
+    </div>
 
     {% block content %}{% endblock %}
 

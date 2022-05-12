@@ -37,7 +37,7 @@ def file(filename):
         image = mongo.db.pets.find_one({"image": filename})["data"]
         return image
     except:
-        return "404: file not found", 404
+        return render_template("404.html"), 404
 
 
 @app.route("/")
@@ -74,7 +74,7 @@ def delete_pet(id):
         else:
             return "404: invalid user permissions", 404
     except:
-        return "404: pet not found", 404
+        return render_template("404.html"), 404
 
 
 @app.route("/add")
@@ -196,7 +196,7 @@ def profile():
             "profile.html", profile=session["user"], session=session, pets=pets
         )
     except Exception:
-        return "error 404: can not find profile", 404
+        return render_template("404.html"), 404
 
 
 @app.route("/login")
@@ -217,7 +217,7 @@ def login_manage():
             ):
                 session["user"] = account.get_account()
                 return redirect("/profile")
-    finally:
+    except:
         return render_template("404.html"), 404
 
 
