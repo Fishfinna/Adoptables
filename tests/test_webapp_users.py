@@ -103,7 +103,7 @@ def test_delete(client, user, pet):
     assert b"name@my.bcit.ca" in client.get("/profile", subdomain="blue").data
 
     # delete account
-    assert client.get("/profile/delete").status_code == 302
+    assert client.get("/profile/delete", subdomain="blue").status_code == 302
 
     # check that it's deleted
     assert b"name@my.bcit.ca" not in client.get(

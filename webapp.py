@@ -43,9 +43,11 @@ def file(filename):
 @app.route("/")
 def homepage():
     """home page"""
-
-    pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
-    return render_template("homepage.html", pets=list(pets), session=session)
+    try:
+        pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
+        return render_template("homepage.html", pets=list(pets), session=session)
+    except:
+        return " ", 404
 
 
 @app.route("/info")
@@ -153,7 +155,13 @@ def pet_manage_edit(id):
 
 @app.route("/signup")
 def signup():
-    return render_template("signup.html")
+    """
+    this will log out the user when they go to the log in screen
+    """
+    try:
+        return render_template("signup.html")
+    except:
+        return "", 404
 
 
 @app.route("/signup/accounts", methods=["POST"])
@@ -201,7 +209,14 @@ def profile():
 
 @app.route("/login")
 def login():
-    return render_template("login.html", session=session)
+    """
+    this will log out the user when they go to the log in screen
+    """
+    try:
+        session["user"] = None
+        return render_template("login.html", session=session)
+    except:
+        return "", 404
 
 
 @app.route("/login/manage", methods=["POST"])
@@ -217,14 +232,20 @@ def login_manage():
             ):
                 session["user"] = account.get_account()
                 return redirect("/profile")
-    finally:
+        return render_template("invalid_account.html"), 404
+    except:
         return render_template("invalid_account.html"), 404
 
 
 @app.route("/logout")
 def logout():
-    session["user"] = None
-    return redirect("/")
+    """log the user out"""
+    if session["user"]:
+        # remove their session data
+        session["user"] = None
+        return redirect("/")
+    else:
+        return "", 404
 
 
 @app.route("/profile/edit", methods=["GET", "POST"])
@@ -263,15 +284,19 @@ def edit_user():
 
 @ app.route("/profile/delete")
 def delete_user():
+    """Delete a user and their listed pets from the application"""
 
-    mongo.db.pets.delete_many(
-        {"shelter_username": session["user"].get("username")})
+    if session["user"]:
+        mongo.db.pets.delete_many(
+            {"shelter_username": session["user"].get("username")})
 
-    mongo.db.users.delete_one(
-        {"username": session["user"].get("username")})
-    session["user"] = None
+        mongo.db.users.delete_one(
+            {"username": session["user"].get("username")})
+        session["user"] = None
 
-    return redirect("/")
+        return redirect("/")
+    else:
+        return "", 404
 
 
 if __name__ == "__main__":
