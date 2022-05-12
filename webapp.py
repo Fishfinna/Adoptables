@@ -37,30 +37,38 @@ def file(filename):
         image = mongo.db.pets.find_one({"image": filename})["data"]
         return image
     except:
-        return "404: file not found", 404
+        return render_template("404.html"), 404
 
 
 @app.route("/")
 def homepage():
     """home page"""
-
-    pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
-    return render_template("homepage.html", pets=list(pets), session=session)
+    try:
+        pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
+        return render_template("homepage.html", pets=list(pets), session=session)
+    except:
+        return render_template("404.html"), 404
 
 
 @app.route("/info")
 def infopage():
     """learn more page"""
-    return render_template("info.html")
+    try:
+        return render_template("info.html")
+    except:
+        return render_template("404.html"), 404
 
 
 @app.route("/adopt/<string:id>")
 def adopt_info(id):
-    """idividual pet page"""
-    selected = mongo.db.pets.find_one_or_404({"_id": ObjectId(id)})
-    pet = Pet(*selected.values())
-    profile = mongo.db.users.find_one({"username": pet.shelter_username})
-    return render_template("pet.html", pet=pet, profile=profile, session=session)
+    """shows the individual pet page"""
+    try:
+        selected = mongo.db.pets.find_one_or_404({"_id": ObjectId(id)})
+        pet = Pet(*selected.values())
+        profile = mongo.db.users.find_one({"username": pet.shelter_username})
+        return render_template("pet.html", pet=pet, profile=profile, session=session)
+    except:
+        return render_template("404.html"), 404
 
 
 @app.route("/remove/<id>", methods=["GET", "POST"])
@@ -72,15 +80,18 @@ def delete_pet(id):
             mongo.db.pets.delete_one({"_id": ObjectId(id)})
             return redirect("/profile")
         else:
-            return "404: invalid user permissions", 404
+            return render_template("404.html", error="invalid permissions"), 404
     except:
-        return "404: pet not found", 404
+        return render_template("404.html"), 404
 
 
 @app.route("/add")
 def addpet():
     """Add a pet form page"""
-    return render_template("add.html", session=session)
+    try:
+        return render_template("add.html", session=session)
+    except:
+        return render_template("404.html"), 404
 
 
 @app.route("/add/newPet", methods=["POST"])
@@ -111,44 +122,52 @@ def pet_manage_adder():
 
 @app.route("/edit/<id>")
 def editpet(id):
-    """this will desplay the currently selected pet"""
-    selected = mongo.db.pets.find_one({"_id": ObjectId(id)})
-    pet = Pet(*selected.values())
-    return render_template("edit.html", pet=pet, session=session)
+    """this will display the currently selected pet"""
+
+    try:
+        selected = mongo.db.pets.find_one({"_id": ObjectId(id)})
+        pet = Pet(*selected.values())
+        return render_template("edit.html", pet=pet, session=session)
+    except:
+        return render_template("404.html"), 404
 
 
 @app.route("/edit/<id>/put", methods=["POST"])
 def pet_manage_edit(id):
     """This will be the update pet page output"""
-    selected = mongo.db.pets.find_one_or_404({"_id": ObjectId(id)})
 
-    pet_data = selected["data"]
-    image_name = selected["image"]
-    if request.files["myfile"]:
-        pet_photo = request.files["myfile"]
-        image_name = (
-            "".join(random.sample(string.ascii_letters + string.digits, 20))
-            + pet_photo.filename
-        )
-        pet_data = pet_photo.read()
+    try:
+        selected = mongo.db.pets.find_one_or_404({"_id": ObjectId(id)})
 
-    update_selected = {
-        "$set": {
-            # the following object will replace that pet
-            "name": request.form.get("pet_name"),
-            "gender": request.form.get("pet_gender"),
-            "species": request.form.get("species"),
-            "age": request.form.get("pet_age"),
-            "description": request.form.get("pet_description"),
-            # these two are for the image information:
-            "image": image_name,
-            "data": pet_data,
+        pet_data = selected["data"]
+        image_name = selected["image"]
+        if request.files["myfile"]:
+            pet_photo = request.files["myfile"]
+            image_name = (
+                "".join(random.sample(string.ascii_letters + string.digits, 20))
+                + pet_photo.filename
+            )
+            pet_data = pet_photo.read()
+
+        update_selected = {
+            "$set": {
+                # the following object will replace that pet
+                "name": request.form.get("pet_name"),
+                "gender": request.form.get("pet_gender"),
+                "species": request.form.get("species"),
+                "age": request.form.get("pet_age"),
+                "description": request.form.get("pet_description"),
+                # these two are for the image information:
+                "image": image_name,
+                "data": pet_data,
+            }
         }
-    }
 
-    mongo.db.pets.update_one(selected, update_selected)
+        mongo.db.pets.update_one(selected, update_selected)
 
-    return redirect("/profile")
+        return redirect("/profile")
+    except:
+        return render_template("404.html"), 404
 
 
 @app.route("/signup")
@@ -163,34 +182,41 @@ def signup():
 @app.route("/signup/accounts", methods=["POST"])
 def manage_signup():
     """manages the sign up data"""
-    user_data = {
-        "username": request.form.get("username"),
-        "password": request.form.get("password"),
-        "shelter_name": request.form.get("shelter name"),
-        "email": request.form.get("email"),
-        "street": request.form.get("street"),
-        "city": request.form.get("city"),
-        "province": request.form.get("province"),
-        "postal": request.form.get("zipcode"),
-        "phone": request.form.get("phone"),
-    }
-    if mongo.db.users.find_one({"username": request.form.get("username")}):
-        return render_template("/signup.html", error="username is taken")
 
-    user_account = User(*user_data.values())
-    mongo.db.users.insert_one(user_account.get_account())
-    selected = mongo.db.users.find_one(
-        {"username": request.form.get("username")})
-    account = User(*list(selected.values())[1:])
-    session["user"] = account.get_account()
+    try:
+        user_data = {
+            "username": request.form.get("username"),
+            "password": request.form.get("password"),
+            "shelter_name": request.form.get("shelter name"),
+            "email": request.form.get("email"),
+            "street": request.form.get("street"),
+            "city": request.form.get("city"),
+            "province": request.form.get("province"),
+            "postal": request.form.get("zipcode"),
+            "phone": request.form.get("phone"),
+        }
+        if mongo.db.users.find_one({"username": request.form.get("username")}):
+            return render_template("/signup.html", error="username is taken")
 
-    return redirect("/profile")
+        user_account = User(*user_data.values())
+        mongo.db.users.insert_one(user_account.get_account())
+        selected = mongo.db.users.find_one(
+            {"username": request.form.get("username")})
+        account = User(*list(selected.values())[1:])
+        session["user"] = account.get_account()
+
+        return redirect("/profile")
+    except:
+        return render_template("404.html"), 404
 
 
 @app.route("/profile")
 def profile():
+    """display the current user profile"""
     try:
         user = session["user"]
+
+        # this will create all of the pets that belong to the user
         pets = [
             Pet(*x.values())
             for x in mongo.db.pets.find(
@@ -200,7 +226,7 @@ def profile():
         return render_template(
             "profile.html", profile=session["user"], session=session, pets=pets
         )
-    except Exception:
+    except:
         return render_template("404.html", error="profile not found")
 
 
@@ -216,6 +242,7 @@ def login():
 
 @app.route("/login/manage", methods=["POST"])
 def login_manage():
+    """Manages the login of a user"""
     try:
         selected = mongo.db.users.find_one(
             {"username": request.form.get("username")})
@@ -234,8 +261,14 @@ def login_manage():
 
 @app.route("/logout")
 def logout():
-    session["user"] = None
-    return redirect("/")
+    """Logs the user out"""
+
+    try:
+        if session["user"]:
+            session["user"] = None
+        return redirect("/")
+    except:
+        return render_template("login.html", session=session)
 
 
 @app.route("/profile/edit", methods=["GET", "POST"])
@@ -270,6 +303,8 @@ def edit_user():
         session["user"] = account.get_account()
 
         return redirect("/profile")
+    else:
+        return render_template("login.html", session=session)
 
 
 @ app.route("/profile/delete")

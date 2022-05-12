@@ -34,23 +34,20 @@ def test_sign_up(client):
     )
 
     # this will crash because a user in the system with this name already exists
-    assert (
-        client.post(
-            "/signup/accounts",
-            data={
-                "username": "",
-                "password": "password",
-                "shelter name": "shelter name",
-                "email": "email",
-                "street": "street",
-                "city": "city",
-                "province": "province",
-                "postal": "zipcode",
-                "phone": "phone",
-            },
-        ).status_code
-        == 404
-    )
+    assert b"username is taken" in client.post(
+        "/signup/accounts",
+        data={
+            "username": "",
+            "password": "password",
+            "shelter name": "shelter name",
+            "email": "email",
+            "street": "street",
+            "city": "city",
+            "province": "province",
+            "postal": "zipcode",
+            "phone": "phone",
+        },
+    ).data
 
     # clean up code
     webapp.mongo.db.users.delete_one({"username": ""})
