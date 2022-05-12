@@ -359,7 +359,6 @@ textarea {
     font-weight: 600;
     padding: 12px;
     border: 2px solid rgb(189, 178, 178);
-    background-color: #ecedeb;
     border-radius: 10px;
     box-sizing: border-box;
     margin-top: 6px;
@@ -503,7 +502,9 @@ form.email button {
 
 /* sign up from css*/
 /* Style all input fields */
-input[type=password], input[type=email], input[type=tel],
+input[type=password],
+input[type=email],
+input[type=tel],
 select,
 textarea {
     font-size: 120%;
@@ -522,54 +523,53 @@ textarea {
 
 /* Style the submit button */
 input[type=submit] {
-  background-color: #04AA6D;
-  color: white;
+    background-color: #04AA6D;
+    color: white;
 }
 
 /* Style the container for inputs */
 .container {
-  background-color: #f1f1f1;
-  padding: 20px;
+    padding: 20px;
 }
 
 /* The message box is shown when the user clicks on the password field */
-#message1, #message2 {
-  display:none;
-  background: #f1f1f1;
-  color: #000;
-  position: relative;
-  padding: 20px;
-  margin-top: 10px;
+#message1,
+#message2 {
+    display: none;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
 }
 
 #message1 p {
-  padding: 10px 35px;
-  font-size: 18px;
+    padding: 10px 35px;
+    font-size: 18px;
 }
 
 #message2 p {
     padding: 10px 35px;
     font-size: 18px;
-  }
+}
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
-  color: green;
+    color: green;
 }
 
 .valid:before {
-  position: relative;
-  left: -35px;
-  content: "✔";
+    position: relative;
+    left: -35px;
+    content: "✔";
 }
 
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
-  color: red;
+    color: red;
 }
 
 .invalid:before {
-  position: relative;
-  left: -35px;
-  content: "✖";
+    position: relative;
+    left: -35px;
+    content: "✖";
 }
