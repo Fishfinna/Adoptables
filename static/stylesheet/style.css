@@ -574,3 +574,15 @@ input[type=submit] {
     content: "✖";
 }
 
+/* search bar*/
+.search-wrapper {
+    margin-left: 40px;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+input {
+    font-size: 1.5rem;
+}
