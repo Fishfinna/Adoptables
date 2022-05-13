@@ -25,8 +25,8 @@
                 <a href="/signup">SIGNUP AS A SHELTER</a>
                 <a href="/login">LOGIN</a> {% endif %}
             </div>
-            <form method="POST" action="{{url_for('search')}}" class = "d-flex">
-                <input class ="form-control me-2" type = "search" placeholder="Search"> {{ form.hidden_tag() }}
+            <form method="GET" action="/search" class = "d-flex">
+                <input class ="form-control me-2" type = "search" placeholder="Search", aria-label="Search", name="searched">
                 <button class = "btn btn-outline-secondary" type ="submit">Search</button>
             </form>
         </nav>

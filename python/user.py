@@ -1,6 +1,5 @@
 from cryptography.fernet import Fernet
 
-
 class User:
     def __init__(
         self,
@@ -67,8 +66,3 @@ class User:
             "postal": self.postal,
             "phone": self.phone,
         }
-
-#Create A Search Form
-class SearchForm(FlaskForm):
-    searched = StringField("Searched"), validate) = [DataRequired]
-    submit = SubmitField("Submit")
