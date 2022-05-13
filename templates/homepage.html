@@ -1,10 +1,5 @@
 {% extends "base.html" %} {% block content %}
-
 <h1>Currently Adoptable Pets</h1>
-<div class = "search-wrapper">
-    <label for = "search"> Search Pets</label>
-    <input type = "search" id = "search">
-</div>
 <main class="pet-list">
 
     {% for pet in pets %}
