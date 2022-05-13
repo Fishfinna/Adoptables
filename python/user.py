@@ -69,3 +69,6 @@ class User:
         }
 
 #Create A Search Form
+class SearchForm(FlaskForm):
+    searched = StringField("Searched"), validate) = [DataRequired]
+    submit = SubmitField("Submit")
