@@ -12,7 +12,7 @@ from flask import (
 import json
 from flask_pymongo import PyMongo
 from python.pet import Pet
-from python.user import User
+from python.user import User, SearchForm
 from bson.objectid import ObjectId
 import random
 import string
@@ -333,3 +333,18 @@ def delete_user():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+#Pass Stuff To Navbar
+@app.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form)
+
+#Create Search Function
+@app.route('/search', mehtods =['GET', 'POST'])
+def search():
+    form = SearchForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        return redirect((url_for('search_results', query=form.search.data)))
+    return render_template("search.html", form=form, searched  = Pet.searched)
+    pass

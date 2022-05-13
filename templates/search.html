@@ -1,0 +1,9 @@
+{% extend 'base.html' %}
+{% set page_title = 'Search' %}
+{% block content %}
+    <h2> You Searched For...</h2>
+    <div>
+        {{ render_form(url_for('search'), form)}}
+    </div>
+
+{% endblock %}

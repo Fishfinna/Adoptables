@@ -1,6 +1,5 @@
 from cryptography.fernet import Fernet
 
-
 class User:
     def __init__(
         self,

@@ -573,3 +573,26 @@ input[type=submit] {
     left: -35px;
     content: "✖";
 }
+
+/* search bar*/
+.search-wrapper {
+    margin-left: 40px;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#search {
+    font-size: 1.5rem;
+    width: 50%;
+    height: 32px;
+    border-radius: 3px;
+    padding: 5px 10px;
+    border:  1px solid;
+
+}
+
+.hide {
+    display: none
+}
