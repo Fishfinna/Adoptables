@@ -333,3 +333,8 @@ def delete_user():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+#Create Search Function
+@app.route('/search', method=["POST"])
+def search():
+    pass
