@@ -1,63 +1,156 @@
 {% extends "base.html"%} {% block content %}
 
+<script>
+    // validation before submitting
+    function verifyPassword() {
+        if (number.classList == "invalid" || letter.classList == "invalid" || length.classList == "invalid" || capital.classList == "invalid" || pswConfirm.classList == "invalid") {
+            alert("Password must have at least 1 capital letter and 1 lowercase letter, and 1 number, minimum 8 characters ");
+            return false;
+        } else {
+            alert("Submit successfully!")
+        }
+    };
+</script>
 
 <h1>Sign Up</h1>
 
 <main class="signup-page">
 
-  <form action="/signup/accounts" method="post" onsubmit="return verifyPassword()">
-
-    <fieldset>
-
-      <legend class="form-inner">Create an Account</legend>
-
-      <label for="shelter name">Shelter Name</label>
-      <input type="text" placeholder="Enter your name" name="shelter name" required>
+    <form action="/signup/accounts" method="post" onsubmit="return verifyPassword()">
 
 
-      <label for="email">Email</label>
-      <input type="email" placeholder="Enter Email" name="email">
+        <fieldset>
 
-      <label for="phone">Phone Number</label>
-      <input type="text" placeholder="Enter Phone Number" name="phone">
-      <hr>
+            <legend class="form-inner">Create an Account</legend>
 
-
-      <label for="zipcode">Street</label>
-      <input type="text" class="form-control" name="street" placeholder="Street">
-      <label for="city">City</label>
-      <input type="text" class="form-control" name="city" placeholder="City">
-      <label for="province">Province</label>
-      <input type="text" class="form-control" name="province" placeholder="Province">
-
-      <label for="zipcode">Postal Code</label>
-      <input type="text" placeholder="Enter your Postal Code" name="zipcode" required>
-      <hr>
-      <label for="username">Username</label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-
-      <label for="psw">Password</label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-      <div id="message1">
-        <h3>Password must contain the following:</h3>
-        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-        <p id="number" class="invalid">A <b>number</b></p>
-        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-      </div>
-      <label for="psw-repeat">Repeat Password</label>
-      <input type="password" placeholder="Repeat Password" name="password-required" required>
-      <div id="message2">
-        <p id="psw-confirm" class="invalid"> Repeat Password must match Password</p>
-      </div>
+            <label for="shelter name">Shelter Name</label>
+            <input type="text" placeholder="Enter your name" name="shelter name" id="shelter name" required>
 
 
-      <div class="clearfix">
-        <a href="/"><button type="button" class="delete">Cancel</button></a>
-        <button type="submit" class="signupbtn">Sign Up</button>
-      </div>
-    </fieldset>
-  </form>
+            <label for="email">Email</label>
+            <input type="email" placeholder="Enter Email" name="email" id="email">
+
+            <label for="phone">Phone Number</label>
+            <input type="text" placeholder="Enter Phone Number" name="phone" id="phone">
+            <hr>
+
+
+            <label for="zipcode">Street</label>
+            <input type="text" class="form-control" name="street" placeholder="Street">
+            <label for="city">City</label>
+            <input type="text" class="form-control" name="city" placeholder="City">
+            <label for="province">Province</label>
+            <input type="text" class="form-control" name="province" placeholder="Province">
+
+            <label for="zipcode">Postal Code</label>
+            <input type="text" placeholder="Enter your Postal Code" name="zipcode" id="zip" required>
+            <hr>
+            <label for="username">Username</label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+
+            <label for="psw">Password</label>
+            <input type="password" placeholder="Enter Password" name="password" id="psw" required>
+            <div id="message1">
+                <h3>Password must contain the following:</h3>
+                <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                <p id="number" class="invalid">A <b>number</b></p>
+                <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            </div>
+            <label for="psw-repeat">Repeat Password</label>
+            <input type="password" placeholder="Repeat Password" name="password-required" id="psw-repeat" required>
+            <div id="message2">
+                <p id="psw-confirm" class="invalid"> Repeat Password must match Password</p>
+            </div>
+            <script>
+                let shelterName = document.getElementById('shelter name')
+                let email = document.getElementById('email')
+                let phone = document.getElementById('phone')
+                let address = document.getElementById('address')
+                let zip = document.getElementById('zip')
+                let myInput = document.getElementById('psw')
+                let repeatedPassword = document.getElementById('psw-repeat')
+                let letter = document.getElementById('letter')
+                let length = document.getElementById('length')
+
+                // When the user clicks on the password field, show the message box
+                myInput.onfocus = function() {
+                    document.getElementById("message1").style.display = "block";
+                }
+
+                // When the user clicks outside of the password field, hide the message box
+                myInput.onblur = function() {
+                    document.getElementById("message1").style.display = "none";
+                }
+
+                // When the user starts to type something inside the password field
+                myInput.onkeyup = function() {
+                        // Validate lowercase letters
+                        var lowerCaseLetters = /[a-z]/g;
+                        if (myInput.value.match(lowerCaseLetters)) {
+                            letter.classList.remove("invalid");
+                            letter.classList.add("valid");
+                        } else {
+                            letter.classList.remove("valid");
+                            letter.classList.add("invalid");
+                        }
+
+                        // Validate capital letters
+                        var upperCaseLetters = /[A-Z]/g;
+                        if (myInput.value.match(upperCaseLetters)) {
+                            capital.classList.remove("invalid");
+                            capital.classList.add("valid");
+                        } else {
+                            capital.classList.remove("valid");
+                            capital.classList.add("invalid");
+                        }
+
+                        // Validate numbers
+                        var numbers = /[0-9]/g;
+                        if (myInput.value.match(numbers)) {
+                            number.classList.remove("invalid");
+                            number.classList.add("valid");
+                        } else {
+                            number.classList.remove("valid");
+                            number.classList.add("invalid");
+                        }
+
+                        // Validate length
+                        if (myInput.value.length >= 8) {
+                            length.classList.remove("invalid");
+                            length.classList.add("valid");
+                        } else {
+                            length.classList.remove("valid");
+                            length.classList.add("invalid");
+                        }
+                    }
+                    // match password
+                pswConfirm = document.getElementById('psw-confirm')
+                repeatedPassword.onfocus = function() {
+                    document.getElementById("message2").style.display = "block";
+                }
+
+                // When the user clicks outside of the password field, hide the message box
+                repeatedPassword.onblur = function() {
+                    document.getElementById("message2").style.display = "none";
+                }
+                repeatedPassword.onchange = function() {
+                    if (repeatedPassword.value === myInput.value) {
+                        pswConfirm.classList.remove("invalid");
+                        pswConfirm.classList.add("valid");
+                    } else {
+                        pswConfirm.classList.remove("valid");
+                        pswConfirm.classList.add("invalid");
+                    }
+                }
+            </script>
+
+            <div class="clearfix">
+                <a href="/"><button type="button" class="delete">Cancel</button></a>
+                <button type="submit" class="signupbtn">Sign Up</button>
+            </div>
+        </fieldset>
+    </form>
 
 
 </main>
