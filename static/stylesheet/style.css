@@ -454,3 +454,76 @@ form.email button {
     max-width: 30%;
     margin: 5%;
 }
+
+/* sign up from css*/
+/* Style all input fields */
+input[type=password], input[type=email], input[type=tel],
+select,
+textarea {
+    font-size: 120%;
+    color: #4d3247;
+    background-color: #ecedeb;
+    font-weight: 600;
+    width: 100%;
+    padding: 12px;
+    border: 2px solid rgb(189, 178, 178);
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+}
+
+/* Style the container for inputs */
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* The message box is shown when the user clicks on the password field */
+#message1, #message2 {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message1 p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+#message2 p {
+    padding: 10px 35px;
+    font-size: 18px;
+  }
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
