@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/static/stylesheet/style.css">
     <script defer src="https://kit.fontawesome.com/85bf5e07f4.js" crossorigin="anonymous"></script>
     <script defer type="text/javascript" src="/static/scripts/drag_drop.js"></script>
-    <!-- <script defer type="text/javascript" src="/static/scripts/form.js"></script> -->
+    <script defer type="text/javascript" src="/static/scripts/email.js"></script>
+
     <title>Adoptables</title>
 </head>
 
@@ -17,18 +18,15 @@
         <nav>
             <div class="nav-buttons">
 
-        
                 <a href="/"><i class="fa-solid fa-house"></i></a>
                 <a href="/info">LEARN MORE</a> {% if session["user"] %}
                 <a href="/profile">VIEW PROFILE</a>
                 <a href="/logout">LOG OUT</a> {% else %}
                 <a href="/signup">SIGNUP AS A SHELTER</a>
                 <a href="/login">LOGIN</a> {% endif %}
+
             </div>
-            <form method="GET" action="/search" class = "d-flex">
-                <input class ="form-control me-2" type = "search" placeholder="Search", aria-label="Search", name="searched">
-                <button class = "btn btn-outline-secondary" type ="submit">Search</button>
-            </form>
+
         </nav>
 
         {% if error %}

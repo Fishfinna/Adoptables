@@ -239,12 +239,11 @@ button.delete {
 }
 
 button.edit {
-    background-color: rgb(76, 154, 76);
+    background-color: rgb(128, 188, 128);
 }
 
 button:hover {
-    box-shadow: rgba(193, 184, 184, 0.1) 2px 4px 5px 2px, rgba(211, 201, 201, 0.06) 2px 4px 5px 2px;
-    letter-spacing: .08em;
+    letter-spacing: .06em;
     transform: scale(1.1);
     filter: brightness(120%);
 }
@@ -305,8 +304,6 @@ textarea {
 #message1,
 #message2 {
     display: none;
-    background: #f1f1f1;
-    color: #000;
     position: relative;
     padding: 20px;
     margin-top: 10px;
@@ -322,7 +319,9 @@ textarea {
     font-size: 18px;
 }
 
+
 /* Add a green text color and a checkmark when the requirements are right */
+
 .valid {
     color: green;
 }
@@ -333,7 +332,9 @@ textarea {
     content: "✔";
 }
 
+
 /* Add a red text color and an "x" when the requirements are wrong */
+
 .invalid {
     color: red;
 }
@@ -500,8 +501,12 @@ form.email button {
     margin: 5%;
 }
 
+
 /* sign up from css*/
+
+
 /* Style all input fields */
+
 input[type=password],
 input[type=email],
 input[type=tel],
@@ -521,78 +526,47 @@ textarea {
     resize: vertical;
 }
 
-/* Style the submit button */
-input[type=submit] {
-    background-color: #04AA6D;
-    color: white;
-}
 
 /* Style the container for inputs */
+
 .container {
     padding: 20px;
 }
 
+
 /* The message box is shown when the user clicks on the password field */
+
 #message1,
 #message2 {
     display: none;
-    color: #000;
     position: relative;
     padding: 20px;
     margin-top: 10px;
 }
 
-#message1 p {
-    padding: 10px 35px;
-    font-size: 18px;
-}
-
-#message2 p {
-    padding: 10px 35px;
-    font-size: 18px;
-}
 
 /* Add a green text color and a checkmark when the requirements are right */
+
 .valid {
-    color: green;
+    color: rgb(43, 126, 43);
 }
 
 .valid:before {
     position: relative;
-    left: -35px;
     content: "✔";
 }
 
+
 /* Add a red text color and an "x" when the requirements are wrong */
+
 .invalid {
-    color: red;
+    color: rgb(203, 67, 67);
 }
 
 .invalid:before {
     position: relative;
-    left: -35px;
     content: "✖";
 }
 
+
 /* search bar*/
-.search-wrapper {
-    margin-left: 40px;
-    font-size: 2rem;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-}
-
-#search {
-    font-size: 1.5rem;
-    width: 50%;
-    height: 32px;
-    border-radius: 3px;
-    padding: 5px 10px;
-    border:  1px solid;
-
-}
-
-.hide {
-    display: none
-}
