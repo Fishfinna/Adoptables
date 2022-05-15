@@ -4,13 +4,9 @@
 <h1>Sign Up</h1>
 
 <main class="signup-page">
+    <div class="form-style">
 
-    <form action="/signup/accounts" method="post" onsubmit="return verifyPassword()">
-
-
-        <fieldset>
-
-            <legend class="form-inner">Create an Account</legend>
+        <form action="/signup/accounts" method="post" onsubmit="return verifyPassword()">
 
             <label for="shelter name">Shelter Name</label>
             <input type="text" placeholder="Enter your name" name="shelter name" id="shelter name" required>
@@ -53,13 +49,12 @@
             </div>
 
 
-            <div class="clearfix">
-                <a href="/"><button type="button" class="delete">Cancel</button></a>
+            <div class="button-container">
                 <button type="submit" class="signupbtn">Sign Up</button>
+                <a href="/"><button type="button" class="delete">Cancel</button></a>
             </div>
-        </fieldset>
-    </form>
-
+        </form>
+    </div>
 
 </main>
 

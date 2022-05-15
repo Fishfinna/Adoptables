@@ -9,12 +9,13 @@
 /* var set up */
 
 :root {
+    --white: rgb(255, 255, 255);
     --main-black: #14110f;
     --off-black: #221e1b;
     --main-bg: rgb(245, 245, 245);
     --off-white: #f4f3ee;
     --layer-white: #e7dede;
-    --layer-white-hover: rgb(229, 215, 211);
+    --layer-white-hover: rgb(235, 235, 235);
     --light-grey: rgb(189, 178, 178);
     --off-gray: #342f31;
     --off-gray-hover: #504848;
@@ -171,6 +172,11 @@ img {
     justify-content: center;
 }
 
+.pet-content {
+    font-size: 1.8em;
+    text-align: center;
+}
+
 .div-pet-page {
     display: flex;
     flex-direction: row;
@@ -242,16 +248,17 @@ div.profile_content {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    max-width: 40%;
 }
 
 button {
+    font-family: 'Dosis';
+    letter-spacing: 2px;
     align-self: left;
     transition: all .3s ease-in-out;
     color: var(--off-white);
     margin-left: 1em;
     border: none;
-    background-color: var(--off-gray-hover);
+    background-color: var(--main-black);
     border-radius: 10px;
     padding: .8em;
     margin: .5em;
@@ -338,6 +345,68 @@ textarea {
 #message2 p {
     padding: 10px 35px;
     font-size: 18px;
+}
+
+#message1,
+#message2 {
+    display: none;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#message1 p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+#message2 p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+.form-style {
+    font: 95% Arial, Helvetica, sans-serif;
+    margin: 10px auto;
+    padding: 16px;
+}
+
+.form-style input[type="text"],
+.form-style input[type="date"],
+.form-style input[type="password"],
+.form-style input[type="email"],
+.form-style input[type="number"],
+.form-style input[type="search"],
+.form-style input[type="time"],
+.form-style input[type="url"],
+.form-style textarea,
+.form-style select {
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: var(--white);
+    margin-bottom: 4%;
+    border: 1px solid var(--border);
+    padding: 3%;
+    color: var(--off-gray-hover);
+    font: 95% Arial, Helvetica, sans-serif;
+}
+
+.form-style input[type="text"]:focus,
+.form-style input[type="date"]:focus,
+.form-style input[type="password"]:focus,
+.form-style input[type="email"]:focus,
+.form-style input[type="number"]:focus,
+.form-style input[type="search"]:focus,
+.form-style input[type="time"]:focus,
+.form-style input[type="url"]:focus,
+.form-style textarea:focus,
+.form-style select:focus {
+    box-shadow: 0 0 5px var(--yellow);
+    padding: 3%;
+    border: 1px solid var(--yellow);
 }
 
 
@@ -628,28 +697,24 @@ textarea {
     text-align: center;
 }
 
-#pet-link {
-    padding: 10px 15px;
-    display: block;
-    text-align: center;
-    margin: .6rem auto;
-    color: var(--layer-white);
-    text-decoration: none;
-    background-color: var(--main-black);
-    border-radius: 10px;
-    transition: .5s;
-}
-
 @media (hover: hover) {
-    #pet-link:hover {
-        color: var(--yellow);
-        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.219);
-    }
     .card:hover img {
         margin-top: -60px;
         box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.209);
     }
     .card:hover>.card__content {
+        margin-top: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@media (hover: none) {
+    .card img {
+        margin-top: -60px;
+        box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.209);
+    }
+    .card>.card__content {
         margin-top: 0;
         opacity: 1;
         visibility: visible;

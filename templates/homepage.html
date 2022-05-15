@@ -1,30 +1,31 @@
 {% extends "base.html" %} {% block content %}
 <h1>Currently Adoptable Pets</h1>
-<main class="pet-list">
+<main>
+
+    <div class="pet-list">
+
+        {% for pet in pets %}
 
 
-
-    {% for pet in pets %}
-
-
-    <a class="pet-container" href="/adopt/{{pet.id}}">
+        <a class="pet-container" href="/adopt/{{pet.id}}">
 
 
-        <div class="card">
-            <img src=" {{ url_for( 'file', filename=pet.image ) }}">
-            <h2 class="pet-title">{{ pet.name }}</h2>
-            <div class="card__content">
-                <p>
-                    {{pet.species}} | {{pet.age}} | {{pet.gender}} <br>{{pet.description}}
-                </p>
-                <a id="pet-link" href="/adopt/{{pet.id}}">Read More</a>
+            <div class="card">
+                <img src=" {{ url_for( 'file', filename=pet.image ) }}">
+                <h2 class="pet-title">{{ pet.name }}</h2>
+                <div class="card__content">
+                    <p>
+                        {{pet.species}} | {{pet.age}} | {{pet.gender}} <br>{{pet.description}}
+                    </p>
+                    <a id="pet-link" href="/adopt/{{pet.id}}"><button>Read More</button></a>
 
+                </div>
             </div>
-        </div>
 
-    </a>
+        </a>
 
-    {% endfor %}
+        {% endfor %}
+    </div>
 
 
 </main>
