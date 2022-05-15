@@ -1,4 +1,5 @@
-from cryptography.fernet import Fernet
+import bcrypt
+
 
 class User:
     def __init__(
@@ -30,7 +31,8 @@ class User:
         if type(password) != bytes:
             file = open("static/key.key", "rb")
             key = file.read()
-            self.encoded_password = Fernet(key).encrypt(self.password.encode())
+            encode = password.encode('utf-8')
+            self.encoded_password = bcrypt.hashpw(encode, key)
             file.close()
         else:
             self.encoded_password = password
@@ -47,9 +49,10 @@ class User:
             # this decodes the password and checks it
             file = open("static/key.key", "rb")
             key = file.read()
-            decoded_password = Fernet(key).decrypt(self.encoded_password).decode()
+            encode = password.encode('utf-8')
+            hashed_password = bcrypt.hashpw(encode, key)
             file.close()
-            if password == decoded_password:
+            if hashed_password == self.encoded_password:
                 return True
         return False
 

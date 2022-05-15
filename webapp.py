@@ -181,39 +181,36 @@ def signup():
         else:
             return render_template("signup.html")
     except Exception:
-        return render_template("404.html"), 404
+        return render_template("404.html", error=Exception), 404
 
 
 @app.route("/signup/accounts", methods=["POST"])
 def manage_signup():
     """manages the sign up data"""
 
-    try:
-        user_data = {
-            "username": request.form.get("username"),
-            "password": request.form.get("password"),
-            "shelter_name": request.form.get("shelter name"),
-            "email": request.form.get("email"),
-            "street": request.form.get("street"),
-            "city": request.form.get("city"),
-            "province": request.form.get("province"),
-            "postal": request.form.get("zipcode"),
-            "phone": request.form.get("phone"),
-        }
-        if mongo.db.users.find_one({"username": request.form.get("username")}):
-            session["error"] = "username taken"
-            return redirect("/signup")
+    user_data = {
+        "username": request.form.get("username"),
+        "password": request.form.get("password"),
+        "shelter_name": request.form.get("shelter name"),
+        "email": request.form.get("email"),
+        "street": request.form.get("street"),
+        "city": request.form.get("city"),
+        "province": request.form.get("province"),
+        "postal": request.form.get("zipcode"),
+        "phone": request.form.get("phone"),
+    }
+    if mongo.db.users.find_one({"username": request.form.get("username")}):
+        session["error"] = "username taken"
+        return redirect("/signup")
 
-        user_account = User(*user_data.values())
-        mongo.db.users.insert_one(user_account.get_account())
-        selected = mongo.db.users.find_one(
-            {"username": request.form.get("username")})
-        account = User(*list(selected.values())[1:])
-        session["user"] = account.get_account()
+    user_account = User(*user_data.values())
+    mongo.db.users.insert_one(user_account.get_account())
+    selected = mongo.db.users.find_one(
+        {"username": request.form.get("username")})
+    account = User(*list(selected.values())[1:])
+    session["user"] = account.get_account()
 
-        return redirect("/profile")
-    except:
-        return render_template("404.html"), 404
+    return redirect("/profile")
 
 
 @app.route("/profile")

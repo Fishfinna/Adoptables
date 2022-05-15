@@ -25,6 +25,10 @@
     --yellow: rgb(220, 183, 113);
 }
 
+p {
+    padding-left: .6em;
+}
+
 html {
     font-family: 'Dosis';
     background-color: var(--main-bg);
@@ -357,12 +361,10 @@ textarea {
 
 #message1 p {
     padding: 10px 35px;
-    font-size: 18px;
 }
 
 #message2 p {
     padding: 10px 35px;
-    font-size: 18px;
 }
 
 .form-style {
@@ -382,16 +384,16 @@ textarea {
 .form-style textarea,
 .form-style select {
     outline: none;
+    max-width: 96%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    width: 100%;
     background: var(--white);
     margin-bottom: 4%;
     border: 1px solid var(--border);
     padding: 3%;
+    font-size: 120%;
     color: var(--off-gray-hover);
-    font: 95% Arial, Helvetica, sans-serif;
 }
 
 .form-style input[type="text"]:focus,
