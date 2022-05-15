@@ -2,26 +2,30 @@
 <h1>Currently Adoptable Pets</h1>
 <main class="pet-list">
 
+
+
     {% for pet in pets %}
+
 
     <a class="pet-container" href="/adopt/{{pet.id}}">
 
 
-        <h1>{{ pet.name }}</h1>
+        <div class="card">
+            <img src=" {{ url_for( 'file', filename=pet.image ) }}">
+            <h2 class="pet-title">{{ pet.name }}</h2>
+            <div class="card__content">
+                <p>
+                    {{pet.species}} | {{pet.age}} | {{pet.gender}} <br>{{pet.description}}
+                </p>
+                <a id="pet-link" href="/adopt/{{pet.id}}">Read More</a>
 
-        <img src=" {{ url_for( 'file', filename=pet.image ) }}">
-
-        <div class="animal-info ">
-
-            <p>Species: {{pet.species}} </p>
-            <p>Age: {{pet.age}}</p>
-            <p>Gender: {{pet.gender}}</p>
-
+            </div>
         </div>
 
     </a>
 
     {% endfor %}
+
 
 </main>
 {% endblock %}

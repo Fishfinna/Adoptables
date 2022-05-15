@@ -1,33 +1,13 @@
 /* imports */
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dosis&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap');
 
-/* basic definitions */
-
-
-/* var set up */
-
-:root {
-    --main-black: #14110f;
-    --off-black: #221e1b;
-    --main-bg: rgb(245, 245, 245);
-    --off-white: #f4f3ee;
-    --layer-white: #e7dede;
-    --layer-white-hover: rgb(229, 215, 211);
-    --light-grey: rgb(189, 178, 178);
-    --off-gray: #342f31;
-    --off-gray-hover: #504848;
-    --border: #6f4b59;
-    --red: rgb(217, 99, 99);
-    --green: rgb(80, 147, 80);
-    --yellow: rgb(220, 183, 113);
-}
+/* basic text definitions */
 
 html {
     font-family: 'Dosis';
-    background-color: var(--main-bg);
-    color: var(--main-black);
+    background-color: #ecedeb;
+    color: #4d3247;
 }
 
 pre {
@@ -45,19 +25,15 @@ main {
 }
 
 h1 {
-    font-size: calc(6vw + 20px);
-    overflow: hidden;
     text-align: center;
-    font-family: 'Josefin Sans';
+    font-size: 6em;
 }
 
 h2 {
-    font-family: 'Josefin Sans';
     font-size: 1.8em;
 }
 
 h3 {
-    font-family: 'Josefin Sans';
     padding-left: 1em;
     font-size: 3em;
 }
@@ -65,90 +41,90 @@ h3 {
 a {
     font-family: 'Dosis';
     text-decoration: none;
-    color: var(--main-black);
+    color: #4d3247;
 }
 
 
 /* nav bar */
 
-.nav-div {
-    z-index: 999;
-    max-height: 5%;
-    position: sticky;
-    top: 0;
-}
-
 nav {
-    max-height: 5%;
-    font-size: 1em;
-    display: flex;
-    justify-content: flex-end;
-    white-space: nowrap;
     z-index: 999;
-    background-color: var(--main-black);
-    padding: 1em;
-    overflow: hidden;
+    background-color: #4d3247;
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
-.topnav {
-    overflow: hidden;
+.nav-buttons a {
+    color: #ecedeb;
+    margin-right: 1.5em;
+    background-color: #a57573;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.topnav a {
-    border-radius: .2em;
-    margin-right: 1em;
-    float: left;
-    display: block;
-    color: var(--layer-white);
-    text-align: center;
-    padding: 1em;
-    text-decoration: none;
+.nav-buttons a:hover {
+    background-color: #9b5263;
 }
 
-.topnav a:hover {
-    color: var(--yellow);
-}
-
-.topnav .icon {
-    display: none;
-}
-
-@media screen and (max-width: 600px) {
-    .topnav a:not(:first-child) {
-        display: none;
-    }
-    .topnav a.icon {
-        float: right;
-        display: block;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .topnav.responsive {
-        position: relative;
-    }
-    .topnav.responsive .icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-    .topnav.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
+.nav-div {
+    z-index: 999;
+    position: sticky;
+    top: 0;
 }
 
 
 /* main pages */
 
+main>*,
 main>*>div {
     margin: 2%;
     padding: 2%;
     border-radius: 20px;
-    color: var(--main-black);
+    color: #4d3247;
     font-size: 100%;
+}
+
+main>* {
+    background: #e6e2dc;
+}
+
+.animal-info {
+    max-width: 100%;
+    margin: 5%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: #e0cec4;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.animal-info * {
+    font-weight: bold;
+    padding: .3em;
+    font-size: 1.5em;
+    margin: 1em;
+}
+
+.pet-container {
+    width: 30em;
+    max-width: 80vw;
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.pet-container:hover {
+    background-color: #e9dad3;
 }
 
 img {
@@ -171,6 +147,10 @@ img {
     justify-content: center;
 }
 
+.pet-container:hover img {
+    transform: scale(1.08);
+}
+
 .div-pet-page {
     display: flex;
     flex-direction: row;
@@ -181,7 +161,7 @@ img {
 }
 
 .pet-contact-info {
-    background-color: var(--layer-white-hover);
+    background-color: #e0cec4;
     padding: 2%;
     font-size: 120%;
     border-radius: 10px;
@@ -190,11 +170,6 @@ img {
 
 .about_us {
     font-size: 2em;
-}
-
-.pet-container {
-    display: flex;
-    flex-direction: column;
 }
 
 
@@ -225,11 +200,11 @@ img {
 /* user profiles */
 
 div.profile_content {
-    background-color: var(--layer-white-hover);
+    background-color: #e6e2dc;
     margin: 2%;
     padding: 2%;
     border-radius: 20px;
-    color: var(--main-black);
+    color: #4d3247;
     font-size: 100%;
 }
 
@@ -248,10 +223,10 @@ div.profile_content {
 button {
     align-self: left;
     transition: all .3s ease-in-out;
-    color: var(--off-white);
+    color: #ecedeb;
     margin-left: 1em;
     border: none;
-    background-color: var(--off-gray-hover);
+    background-color: #a57573;
     border-radius: 10px;
     padding: .8em;
     margin: .5em;
@@ -260,7 +235,11 @@ button {
 }
 
 button.delete {
-    background-color: var(--red);
+    background-color: rgb(217, 99, 99);
+}
+
+button.edit {
+    background-color: rgb(128, 188, 128);
 }
 
 button:hover {
@@ -309,12 +288,12 @@ input[type=password],
 select,
 textarea {
     font-size: 120%;
-    color: var(--off-gray-hover);
-    background-color: var(--off-white);
+    color: #4d3247;
+    background-color: #ecedeb;
     font-weight: 600;
     width: 100%;
-    padding: 1rem;
-    border: 2px solid var(--border);
+    padding: 12px;
+    border: 2px solid rgb(189, 178, 178);
     border-radius: 10px;
     box-sizing: border-box;
     margin-top: 6px;
@@ -344,7 +323,7 @@ textarea {
 /* Add a green text color and a checkmark when the requirements are right */
 
 .valid {
-    color: var(--green);
+    color: green;
 }
 
 .valid:before {
@@ -357,7 +336,7 @@ textarea {
 /* Add a red text color and an "x" when the requirements are wrong */
 
 .invalid {
-    color: var(rgb(217, 99, 99));
+    color: red;
 }
 
 .invalid:before {
@@ -377,10 +356,10 @@ textarea {
     align-items: center;
     justify-content: center;
     font-size: 120%;
-    color: var(--off-gray);
+    color: #4d3247;
     font-weight: 600;
     padding: 12px;
-    border: 2px solid var(--border);
+    border: 2px solid rgb(189, 178, 178);
     border-radius: 10px;
     box-sizing: border-box;
     margin-top: 6px;
@@ -396,20 +375,20 @@ textarea {
 
 fieldset {
     border-radius: 10px;
-    border: 2px solid var(--border);
+    border: 2px solid #4d3247;
 }
 
 .alert {
     padding: 20px;
     opacity: 0.9;
-    background-color: var(--red);
-    color: var(--main-bg);
+    background-color: rgb(217, 99, 99);
+    color: white;
     margin-bottom: 15px;
 }
 
 .closebtn {
     margin-left: 15px;
-    color: var(--main-bg);
+    color: white;
     font-weight: bold;
     float: right;
     font-size: 22px;
@@ -426,7 +405,7 @@ fieldset {
 }
 
 .drop-zone {
-    background-color: var(--off-white);
+    background-color: #ecedeb;
     min-width: 20rem;
     height: 20rem;
     padding: 2rem;
@@ -435,13 +414,13 @@ fieldset {
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    border: 2px solid var(--border);
+    border: 2px solid rgb(189, 178, 178);
     border-radius: 10px;
 }
 
 .drop-zone--over,
 .drop-zone:hover {
-    background-color: var(--off-white);
+    background-color: #e0cec4;
 }
 
 .drop-zone__input {
@@ -453,7 +432,7 @@ fieldset {
     height: 100%;
     border-radius: 20px;
     overflow: hidden;
-    background-color: var(--off-white);
+    background-color: #ecedeb;
     background-size: cover;
     position: relative;
 }
@@ -465,8 +444,8 @@ fieldset {
     left: 0;
     width: 100%;
     padding: 5px 0;
-    color: var(--off-white);
-    background: var(--main-black);
+    color: #ecedeb;
+    background: rgba(0, 0, 0, 0.75);
     font-size: 14px;
     text-align: center;
 }
@@ -500,7 +479,7 @@ form.email button {
 }
 
 #pet-basic-info {
-    background-color: var(--layer-white);
+    background-color: #E0CEC4;
     font-weight: bold;
     display: flex;
     flex-direction: row;
@@ -534,12 +513,12 @@ input[type=tel],
 select,
 textarea {
     font-size: 120%;
-    color: var(--off-gray);
-    background-color: var(--off-white);
+    color: #4d3247;
+    background-color: #ecedeb;
     font-weight: 600;
     width: 100%;
     padding: 12px;
-    border: 2px solid var(--border);
+    border: 2px solid rgb(189, 178, 178);
     border-radius: 10px;
     box-sizing: border-box;
     margin-top: 6px;
@@ -551,7 +530,7 @@ textarea {
 /* Style the container for inputs */
 
 .container {
-    padding: 1.2em;
+    padding: 20px;
 }
 
 
@@ -569,7 +548,7 @@ textarea {
 /* Add a green text color and a checkmark when the requirements are right */
 
 .valid {
-    color: var(--green);
+    color: rgb(43, 126, 43);
 }
 
 .valid:before {
@@ -581,7 +560,7 @@ textarea {
 /* Add a red text color and an "x" when the requirements are wrong */
 
 .invalid {
-    color: var(--red);
+    color: rgb(203, 67, 67);
 }
 
 .invalid:before {
@@ -591,67 +570,3 @@ textarea {
 
 
 /* cards */
-
-.card {
-    margin: 4%;
-    margin-top: 60px;
-    padding: min(10px, 3em);
-    cursor: pointer;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
-
-.card h2 {
-    text-align: center;
-    font-size: 3em;
-    padding-bottom: 10px;
-}
-
-.card img {
-    border-radius: 10px;
-    position: relative;
-    z-index: 10;
-    transition: all 1s ease-in-out;
-}
-
-.card__content {
-    margin: 1rem 0;
-    overflow: hidden;
-    margin-top: -200px;
-    opacity: 0;
-    visibility: hidden;
-    transition: all .6s ease-in-out;
-}
-
-.card__content p {
-    text-align: center;
-}
-
-#pet-link {
-    padding: 10px 15px;
-    display: block;
-    text-align: center;
-    margin: .6rem auto;
-    color: var(--layer-white);
-    text-decoration: none;
-    background-color: var(--main-black);
-    border-radius: 10px;
-    transition: .5s;
-}
-
-@media (hover: hover) {
-    #pet-link:hover {
-        color: var(--yellow);
-        box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.219);
-    }
-    .card:hover img {
-        margin-top: -60px;
-        box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.209);
-    }
-    .card:hover>.card__content {
-        margin-top: 0;
-        opacity: 1;
-        visibility: visible;
-    }
-}

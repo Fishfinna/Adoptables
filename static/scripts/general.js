@@ -51,3 +51,15 @@ function updateThumbnail(dropZoneElement, file) {
         thumbnailElement.style.backgroundImage = null;
     }
 }
+
+
+
+// nav
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
