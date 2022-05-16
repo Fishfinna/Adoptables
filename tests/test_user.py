@@ -7,7 +7,7 @@ from unittest import mock
 @pytest.fixture
 def user(mocker):
     mock_open = mock.mock_open(
-        read_data=b"h-vxu6n7z1Xy0WsCiZ00x1e_w_2WAtSUSkN69ArnOYY="
+        read_data=b"$2b$12$hEqvUfXW4VXOEENCESztIu"
     )
     with mock.patch("builtins.open", mock_open):
         return User("username", "pass")
@@ -18,7 +18,7 @@ def test_init_error():
 
     with pytest.raises(ValueError):
         mock_open = mock.mock_open(
-            read_data=b"h-vxu6n7z1Xy0WsCiZ00x1e_w_2WAtSUSkN69ArnOYY="
+            read_data=b"$2b$12$hEqvUfXW4VXOEENCESztIu"
         )
         with mock.patch("builtins.open", mock_open):
             return User(123, "pass")
@@ -33,10 +33,10 @@ def test_init(user):
     assert type(user.encoded_password) == bytes
 
     mock_open = mock.mock_open(
-        read_data=b"h-vxu6n7z1Xy0WsCiZ00x1e_w_2WAtSUSkN69ArnOYY="
+        read_data=b"$2b$12$hEqvUfXW4VXOEENCESztIu"
     )
     with mock.patch("builtins.open", mock_open):
-        User("name", b"h-vxu6n7z1Xy0WsCiZ00x1e_w_2WAtSUSkN69ArnOYY=")
+        User("name", b"$2b$12$hEqvUfXW4VXOEENCESztIu")
 
 
 def test_check_password_error(user):
@@ -44,7 +44,7 @@ def test_check_password_error(user):
     with pytest.raises(ValueError):
 
         mock_open = mock.mock_open(
-            read_data=b"h-vxu6n7z1Xy0WsCiZ00x1e_w_2WAtSUSkN69ArnOYY="
+            read_data=b"$2b$12$hEqvUfXW4VXOEENCESztIu"
         )
         with mock.patch("builtins.open", mock_open):
             user.check_password("name", 111)
@@ -57,7 +57,7 @@ def test_check_password(user, mocker):
         user.check_password("name", 123)
 
     mock_open = mock.mock_open(
-        read_data=b"h-vxu6n7z1Xy0WsCiZ00x1e_w_2WAtSUSkN69ArnOYY="
+        read_data=b"$2b$12$hEqvUfXW4VXOEENCESztIu"
     )
     with mock.patch("builtins.open", mock_open):
 

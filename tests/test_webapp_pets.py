@@ -45,7 +45,7 @@ def test_edit_pet(client, pet):
     # check that the edit page is available
     request_page = client.get(f"/edit/{pet_id}")
     assert request_page.status_code == 200
-    assert b'<form method="post"' in request_page.data
+    assert b'<form' in request_page.data
 
     # check that we can put edited content
     request_update = client.post(

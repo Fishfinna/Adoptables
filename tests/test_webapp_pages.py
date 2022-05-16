@@ -12,7 +12,7 @@ from tests.test_webapp_fixtures import *
 def test_homepage(client):
     """checks that the homepage is working"""
     assert client.get("/").status_code == 200
-    assert b'<main class="pet-list">' in client.get("/").data
+    assert b'<main>' in client.get("/").data
 
 
 # profile details
