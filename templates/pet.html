@@ -10,7 +10,7 @@
         <div class="pet-info pet-contact-info">
             <h1>Description</h1>
 
-            <p class="pet-content">Species: {{pet.species}}, Age: {{pet.age}}, Gender: {{pet.gender}}</p>
+            <p class="pet-content">Species: {{pet.species}} | Age: {{pet.age}} | Gender: {{pet.gender}}</p>
             <hr>
             <pre>{{pet.description}}</pre>
 
@@ -36,7 +36,8 @@
                         <input type="text" id="Subject" name="subject">
 
                         <label for="message" class="fcf-label">Your message</label>
-                        <textarea id="message" name="message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+                        <textarea id="message" name="message" class="fcf-form-control" rows="6" maxlength="3000"
+                            required></textarea>
 
                     </div>
                     <button onclick='sendEmail()' type="submit">Send message</button>

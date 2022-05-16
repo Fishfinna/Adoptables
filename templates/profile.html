@@ -40,32 +40,16 @@
                     <div class="button-container ">
 
                         <a href="/remove/{{pet.id}} ">
-                            <button onclick="confirm()" class="delete ">Delete</button>
+                            <button class="delete ">Delete</button>
                         </a>
-                        <script>
-                            function confirm() {
-                                var result = confirm("Are you sure you want to delete?");
-                                if (result) {
-                                    return true;
-                                } else {
-                                    return false;
-                                }
-                            }
-                        </script>
                         <a href="/edit/{{pet.id}} ">
                             <button class="edit ">Edit</button>
                         </a>
                         <a id="pet-link" href="/adopt/{{pet.id}}"><button>Read More</button></a>
-
                     </div>
-
-
                 </div>
-
             </div>
-
         </a>
-
         {% endfor %}
     </div>
 
