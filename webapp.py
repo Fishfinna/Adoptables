@@ -59,7 +59,7 @@ def homepage():
             return render_template("homepage.html", pets=list(search_pets), session=session, error='No pets found')
         return render_template("homepage.html", pets=list(search_pets), session=session)
     else:
-        return render_template("404.html", error="method not allowed"), 404
+        return render_template("404.html", error="method not allowed"), 405
 
 
 @ app.route("/info")

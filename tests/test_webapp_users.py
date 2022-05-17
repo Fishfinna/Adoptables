@@ -105,3 +105,19 @@ def test_delete(client, user, pet):
     # check that it's deleted
     assert b"name@my.bcit.ca" not in client.get(
         f"/adopt/{pet_id}", subdomain="blue").data
+
+
+def test_login_manager(client):
+    """test login"""
+    assert b"user can not" in client.post(
+        "/login/manage", data={"username": ""}).data
+
+
+def test_signup_error(client):
+    """test the sign up page"""
+
+    with client.session_transaction(subdomain="blue") as session:
+        # assume that a user is signed in
+        session["error"] = {"error": "IM BROKEN!!! :("}
+
+    assert b"div" in client.get("/signup", subdomain="blue").data
