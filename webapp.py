@@ -53,10 +53,11 @@ def homepage():
 
     elif request.method == "POST":
         pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
-        search_pets = [pet for pet in list(pets) if request.form.get(
-            "search").upper() in str(pet.to_dict()).upper()]
+        search_pets = [pet for pet in list(
+            pets) if request.form.get('search').upper() in str(pet.to_dict()).upper()]
+        if len(search_pets) == 0:
+            return render_template("homepage.html", pets=list(search_pets), session=session, error='No pets found')
         return render_template("homepage.html", pets=list(search_pets), session=session)
-
     else:
         return render_template("404.html", error="method not allowed"), 404
 
