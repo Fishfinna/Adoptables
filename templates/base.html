@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/stylesheet/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20,400,1,0" />
     <script defer src="https://kit.fontawesome.com/85bf5e07f4.js" crossorigin="anonymous"></script>
     <script defer type="text/javascript" src="/static/scripts/general.js"></script>
     <script defer type="text/javascript" src="/static/scripts/email.js"></script>
@@ -16,27 +17,22 @@
 <body>
     <div class="nav-div">
         <nav class="navMenu">
-
-
+            <h2 class="logo">Adoptables</h2>
             <div class="topnav" class="navMenu" id="myTopnav">
-                <a href="/"><i class="fa-solid fa-house" class="active"></i></a>
-                <a href="/info">LEARN MORE</a> {% if session["user"] %}
-                <a href="/profile">VIEW PROFILE</a>
-                <a href="/logout">LOG OUT</a> {% else %}
-                <a href="/signup">SIGNUP AS A SHELTER</a>
-                <a href="/login">LOGIN</a> {% endif %}
+                <a href="/"><i class="material-symbols-rounded">home</i>HOME</a>
+                <a href="/info"><i class="material-symbols-rounded">info</i> LEARN MORE</a> {% if session["user"] %}
+                <a href="/profile"><i class="material-symbols-rounded">account_circle_full</i> VIEW PROFILE</a>
+                <a href="/logout"><i class="material-symbols-rounded">exit_to_app</i> LOG OUT</a> {% else %}
+                <a href="/signup"><i class="material-symbols-rounded">group_add</i> SIGNUP</a>
+                <a href="/login"> <i class="material-symbols-rounded">login</i> LOGIN</a> {% endif %}
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
-
-
             </div>
-
         </nav>
-
         {% if error %}
         <div class="alert">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> {{error}}
+            <i class="closebtn" onclick="this.parentElement.style.display='none';">&times;</i> {{error}}
         </div>
         {% endif %}
     </div>
@@ -46,11 +42,9 @@
 
     <footer>
         <div class="footer-content">
-            <p>© Copyright 2022</p>
-            <p>✉ adoptables.app@gmail.com</p>
-            <pre>   Created by:    MJ Galam, Shanti Stein-Gagnon, 
-                            Hai Run Yin, Coburn Nguyen, 
-                            Phuong Vi Dang, Ravi Walberg</pre>
+            <hr>
+            <p><i class="material-symbols-rounded">mail</i> adoptables.app@gmail.com</p>
+            <p> © Copyright 2022 </p>
         </div>
     </footer>
 

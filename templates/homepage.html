@@ -2,7 +2,16 @@
 <h1>Currently Adoptable Pets</h1>
 <main>
 
+    <form id="myInput" class="form-style" action="post">
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search">
+            <button class="material-symbols-rounded">search</button>
+        </div>
+    </form>
+
+
     <div class="pet-list">
+
 
         {% for pet in pets %}
 
@@ -17,7 +26,7 @@
                     <p>
                         {{pet.species}} | {{pet.age}} | {{pet.gender}} <br>{{pet.description}}
                     </p>
-                    <a id="pet-link" href="/adopt/{{pet.id}}"><button>Read More</button></a>
+                    <a id="pet-link" href="/adopt/{{pet.id}}"><button><i class="material-symbols-rounded">pets</i> Read More</button></a>
 
                 </div>
             </div>

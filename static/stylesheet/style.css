@@ -25,8 +25,12 @@
     --yellow: rgb(220, 183, 113);
 }
 
+i {
+    vertical-align: bottom;
+}
+
 p {
-    padding-left: .6em;
+    padding-left: .2em;
 }
 
 html {
@@ -44,6 +48,7 @@ body {
 }
 
 main {
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
 }
@@ -84,24 +89,25 @@ a {
 
 nav {
     max-height: 4%;
-    font-size: 1em;
+    font-size: 0.6em;
     display: flex;
     justify-content: flex-end;
     white-space: nowrap;
     z-index: 999;
     background-color: var(--main-black);
     padding: 1em;
-    overflow: hidden;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .topnav {
+    font-size: 1.3em;
     overflow: hidden;
 }
 
 .topnav a {
     border-radius: .2em;
     margin-right: 1em;
+    font-size: 1.5em;
     float: left;
     display: block;
     color: var(--layer-white);
@@ -112,34 +118,32 @@ nav {
 
 .topnav a:hover {
     color: var(--yellow);
+    background-color: var(--off-black);
 }
 
 .topnav .icon {
     display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .topnav a:not(:first-child) {
         display: none;
     }
-
     .topnav a.icon {
         float: right;
         display: block;
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .topnav.responsive {
         position: relative;
     }
-
     .topnav.responsive .icon {
         position: absolute;
         right: 0;
         top: 0;
     }
-
     .topnav.responsive a {
         float: none;
         display: block;
@@ -386,6 +390,19 @@ textarea {
     box-shadow: 0 0 5px var(--yellow);
     padding: 3%;
     border: 1px solid var(--yellow);
+}
+
+
+/* search */
+
+.search-container {
+    margin: 0;
+    align-items: center;
+    color: var(--off-white);
+    display: flex;
+    flex-direction: row;
+    border-color: transparent;
+    background-color: var(--main-black);
 }
 
 
@@ -681,7 +698,6 @@ textarea {
         margin-top: -60px;
         box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.209);
     }
-
     .card:hover>.card__content {
         margin-top: 0;
         opacity: 1;
@@ -694,7 +710,6 @@ textarea {
         margin-top: -60px;
         box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.209);
     }
-
     .card>.card__content {
         margin-top: 0;
         opacity: 1;
@@ -703,17 +718,19 @@ textarea {
 }
 
 
-
-
 /* footer */
 
 footer {
-    font-size: 2vw;
+    display: flex;
+    align-items: flex-end;
+    height: 20vh;
+    font-size: 1.3em;
     color: var(--layer-white);
     padding: 1%;
     position: relative;
     bottom: 0;
     max-width: 100vw;
-    background: var(--off-black);
-    text-align: right;
+    background: var(--main-black);
+    justify-content: center;
+    text-align: center;
 }

@@ -271,7 +271,7 @@ def logout():
             session["user"] = None
         return redirect("/")
     except:
-        return render_template("login.html", session=session)
+        return render_template("404.html", session=session)
 
 
 @app.route("/profile/edit", methods=["GET", "POST"])
