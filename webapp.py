@@ -40,17 +40,28 @@ def file(filename):
         return render_template("404.html"), 404
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def homepage():
     """home page"""
-    try:
+
+    if request.method == "GET":
+        try:
+            pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
+            return render_template("homepage.html", pets=list(pets), session=session)
+        except:
+            return render_template("404.html"), 404
+
+    elif request.method == "POST":
         pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
-        return render_template("homepage.html", pets=list(pets), session=session)
-    except:
-        return render_template("404.html"), 404
+        search_pets = [pet for pet in list(pets) if request.form.get(
+            "search").upper() in str(pet.to_dict()).upper()]
+        return render_template("homepage.html", pets=list(search_pets), session=session)
+
+    else:
+        return render_template("404.html", error="method not allowed"), 404
 
 
-@app.route("/info")
+@ app.route("/info")
 def infopage():
     """learn more page"""
     try:
@@ -59,7 +70,7 @@ def infopage():
         return render_template("404.html"), 404
 
 
-@app.route("/adopt/<string:id>")
+@ app.route("/adopt/<string:id>")
 def adopt_info(id):
     """shows the individual pet page"""
     try:
@@ -71,7 +82,7 @@ def adopt_info(id):
         return render_template("404.html"), 404
 
 
-@app.route("/remove/<id>", methods=["GET", "POST"])
+@ app.route("/remove/<id>", methods=["GET", "POST"])
 def delete_pet(id):
     """this will delete pets and redirect to home"""
     try:
@@ -85,7 +96,7 @@ def delete_pet(id):
         return render_template("404.html"), 404
 
 
-@app.route("/add")
+@ app.route("/add")
 def addpet():
     """Add a pet form page"""
     try:
@@ -94,7 +105,7 @@ def addpet():
         return render_template("404.html"), 404
 
 
-@app.route("/add/newPet", methods=["POST"])
+@ app.route("/add/newPet", methods=["POST"])
 def pet_manage_adder():
     """Manages the file storage"""
     if "myfile" in request.files:
@@ -120,7 +131,7 @@ def pet_manage_adder():
     return redirect("/profile")
 
 
-@app.route("/edit/<id>")
+@ app.route("/edit/<id>")
 def editpet(id):
     """this will display the currently selected pet"""
 
@@ -132,7 +143,7 @@ def editpet(id):
         return render_template("404.html"), 404
 
 
-@app.route("/edit/<id>/put", methods=["POST"])
+@ app.route("/edit/<id>/put", methods=["POST"])
 def pet_manage_edit(id):
     """This will be the update pet page output"""
 

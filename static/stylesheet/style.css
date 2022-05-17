@@ -129,6 +129,7 @@ nav {
     .topnav a:not(:first-child) {
         display: none;
     }
+
     .topnav a.icon {
         float: right;
         display: block;
@@ -139,11 +140,13 @@ nav {
     .topnav.responsive {
         position: relative;
     }
+
     .topnav.responsive .icon {
         position: absolute;
         right: 0;
         top: 0;
     }
+
     .topnav.responsive a {
         float: none;
         display: block;
@@ -488,6 +491,7 @@ fieldset {
 .image-upload {
     position: relative;
     align-self: center;
+    min-width: 80%;
 }
 
 .drop-zone {
@@ -506,6 +510,10 @@ fieldset {
 
 .drop-zone--over,
 .drop-zone:hover {
+
+    min-width: 80%;
+    height: 40vh;
+    padding: 5%;
     background-color: var(--yellow);
 }
 
@@ -698,6 +706,7 @@ textarea {
         margin-top: -60px;
         box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.209);
     }
+
     .card:hover>.card__content {
         margin-top: 0;
         opacity: 1;
@@ -710,6 +719,7 @@ textarea {
         margin-top: -60px;
         box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.209);
     }
+
     .card>.card__content {
         margin-top: 0;
         opacity: 1;
