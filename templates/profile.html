@@ -11,7 +11,7 @@
         </div>
         <div>
             <a href="/profile/edit"><button>Edit</button></a>
-            <a href="/profile/delete"><button class="delete"> Delete Account</button></a>
+            <a href="/profile/delete" onclick="return myConfirm();" type="submit"><button class="delete"> Delete Account</button></a>
         </div>
 
     </div>
@@ -39,7 +39,7 @@
                     </p>
                     <div class="button-container ">
 
-                        <a href="/remove/{{pet.id}} ">
+                        <a href="/remove/{{pet.id}} " onclick="return myConfirm();" type="submit">
                             <button class="delete ">Delete</button>
                         </a>
                         <a href="/edit/{{pet.id}} ">
@@ -54,4 +54,16 @@
     </div>
 
 </main>
+
+<script>
+    function myConfirm() {
+        var result = confirm("Want to delete?");
+        if (result == true) {
+            return true;
+        } else {
+            return false
+        }
+    }
+
+</script>
 {% endblock %}
