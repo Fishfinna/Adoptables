@@ -4,7 +4,7 @@ from flask_pymongo import PyMongo
 from flask import session
 import io
 from bson.objectid import ObjectId
-from tests.test_webapp_fixtures import *
+from test.test_webapp_fixtures import *
 
 
 # pet manipulation tests

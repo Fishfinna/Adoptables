@@ -1,0 +1,15 @@
+language: python
+python:
+  - "3.9"
+
+install: "pip install -r ./requirments.txt"
+
+script:
+  - pytest --cov
+
+deploy:
+  provider: heroku
+  api_key: 51b5ba3b-fc2d-42ce-a593-05561937f242
+  app: adoptables-app
+  on:
+    repo: Fishfinna/ACIT2911-PROJECT
