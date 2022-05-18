@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dosis&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 
 /* basic definitions */
 
@@ -57,16 +58,16 @@ h1 {
     font-size: calc(6vw + 20px);
     overflow: hidden;
     text-align: center;
-    font-family: 'Josefin Sans';
+    font-family: 'Roboto';
 }
 
 h2 {
-    font-family: 'Josefin Sans';
+    font-family: 'Roboto';
     font-size: 1.8em;
 }
 
 h3 {
-    font-family: 'Josefin Sans';
+    font-family: 'Roboto';
     padding-left: 1em;
     font-size: 3em;
 }
@@ -129,7 +130,6 @@ nav {
     .topnav a:not(:first-child) {
         display: none;
     }
-
     .topnav a.icon {
         float: right;
         display: block;
@@ -140,13 +140,11 @@ nav {
     .topnav.responsive {
         position: relative;
     }
-
     .topnav.responsive .icon {
         position: absolute;
         right: 0;
         top: 0;
     }
-
     .topnav.responsive a {
         float: none;
         display: block;
@@ -510,7 +508,6 @@ fieldset {
 
 .drop-zone--over,
 .drop-zone:hover {
-
     min-width: 80%;
     height: 40vh;
     padding: 5%;
@@ -706,7 +703,6 @@ textarea {
         margin-top: -60px;
         box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.209);
     }
-
     .card:hover>.card__content {
         margin-top: 0;
         opacity: 1;
@@ -719,7 +715,6 @@ textarea {
         margin-top: -60px;
         box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.209);
     }
-
     .card>.card__content {
         margin-top: 0;
         opacity: 1;
