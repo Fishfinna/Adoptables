@@ -2,8 +2,6 @@ language: python
 python:
   - "3.9"
 
-on: push
-
 install: "pip install -r requirements.txt"
 
 script:
