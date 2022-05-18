@@ -63,3 +63,14 @@ function myFunction() {
         x.className = "topnav";
     }
 }
+
+
+// button delete check
+function confirm_delete() {
+    var result = confirm("Are you sure you want to delete this item?");
+    if (result == true) {
+        return true;
+    } else {
+        return false
+    }
+}

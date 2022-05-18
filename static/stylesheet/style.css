@@ -31,6 +31,7 @@ i {
 }
 
 p {
+    padding: .1em;
     padding-left: .2em;
 }
 
@@ -68,7 +69,7 @@ h2 {
 
 h3 {
     font-family: 'Roboto';
-    padding-left: 1em;
+    padding-left: 0.2em;
     font-size: 3em;
 }
 
@@ -76,6 +77,10 @@ a {
     font-family: 'Dosis';
     text-decoration: none;
     color: var(--main-black);
+}
+
+.large-font {
+    font-size: 2rem;
 }
 
 
@@ -406,6 +411,10 @@ textarea {
     background-color: var(--main-black);
 }
 
+.search-container input {
+    height: 112%;
+}
+
 
 /* Add a green text color and a checkmark when the requirements are right */
 
@@ -665,6 +674,7 @@ textarea {
 .card {
     margin: 4%;
     margin-top: 60px;
+    margin-bottom: 10vh;
     padding: min(10px, 3em);
     cursor: pointer;
     border-radius: 10px;
