@@ -1,0 +1,56 @@
+{% extends "base.html"%} {% block content %}
+<main>
+    <div class="profile_content">
+        <div class=profile_div>
+            <h2>Shelter Name: {{profile.shelter_name}}</h2>
+            <p>Account Username: {{profile.username}}</p>
+            <p>Email: {{profile.email}}</p>
+            <p>Phone Number: {{profile.phone}}</p>
+            <p>Address: {{profile.street}}, {{profile.city}}, {{profile.province}}. {{profile.postal}}</p>
+
+        </div>
+        <div>
+            <a href="/profile/edit"><button>Edit</button></a>
+            <a href="/profile/delete" onclick="return confirm_delete();" type="submit"><button class="delete"> Delete Account</button></a>
+        </div>
+
+    </div>
+
+
+    <h3>Listed Pets:</h3>
+
+    <a href="/add" id="add-pet-button"><button>+ ADD A PET</button></a>
+
+
+    <div class="pet-list">
+
+        {% for pet in pets %}
+
+
+        <a class="pet-container" href="/adopt/{{pet.id}}">
+
+
+            <div class="card">
+                <img src=" {{ url_for( 'file', filename=pet.image ) }}">
+                <h2 class="pet-title">{{ pet.name }}</h2>
+                <div class="card__content">
+                    <p>
+                        {{pet.species}} | {{pet.age}} | {{pet.gender}} <br>{{pet.description}}
+                    </p>
+                    <div class="button-container ">
+
+                        <a href="/remove/{{pet.id}} " onclick="return confirm_delete();" type="submit">
+                            <button class="delete ">Delete</button>
+                        </a>
+                        <a href="/edit/{{pet.id}} ">
+                            <button class="edit ">Edit</button>
+                        </a>
+                        <a id="pet-link" href="/adopt/{{pet.id}}"><button>Read More</button></a>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

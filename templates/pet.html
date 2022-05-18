@@ -1,0 +1,50 @@
+{% extends "base.html"%} {% block content %}
+
+<h1 id="pet-title">Hello! my name is {{pet.name}}!</h1>
+
+<main class="pet-page">
+    <div class="profile_body">
+        <img id="main-image" src=" {{ url_for( 'file', filename=pet.image ) }}">
+
+        <br>
+        <div class="pet-info pet-contact-info">
+            <h1>Description</h1>
+
+            <p class="pet-content">Species: {{pet.species}} | Age: {{pet.age}} | Gender: {{pet.gender}}</p>
+            <hr>
+            <pre>{{pet.description}}</pre>
+
+        </div>
+        <div class="pet-info pet-contact-info">
+            <h1>Contact</h1>
+
+            <h2 id="name-of-shelter">Shelter Name: {{profile.shelter_name}}</h2>
+            <p id="shelter_email">Email: {{profile.email}}</p>
+            <p>Phone Number: {{profile.phone}}</p>
+            <p>Address: {{profile.street}}, {{profile.city}}, {{profile.province}}. {{profile.postal}}</p>
+
+            <hr>
+            <h2>Email Now</h2>
+            <div class="form-style">
+                <form class="email" method="get" action="/" onsubmit="sendEmail()">
+
+                    <div>
+                        <label for="Email" class="fcf-label">Your email address</label>
+                        <input type="email" id="Email" name="email" required>
+
+                        <label for="Subject" class="fcf-label">Your Subject</label>
+                        <input type="text" id="Subject" name="subject">
+
+                        <label for="message" class="fcf-label">Your message</label>
+                        <textarea id="message" name="message" class="fcf-form-control" rows="6" maxlength="3000"
+                            required></textarea>
+
+                    </div>
+                    <button onclick='sendEmail()' type="submit">Send message</button>
+                </form>
+            </div>
+        </div>
+        <button id="go-back-button" onclick="history.back()">Go Back</button>
+    </div>
+</main>
+{% endblock %}

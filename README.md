@@ -5,9 +5,13 @@ In this project we will create a basic pet adoption app.
 
 ## CREATORS
 
-Ravi Walberg
-Phuong Vi Dang
-Shanti Stein-Gagnon
-Hai Run (Kooby) Yin
-Mike Javee (MJ) Galam
-Coburn Nguyen
+Ravi Walberg,
+<br />Phuong Vi Dang,
+<br />Shanti Stein-Gagnon,
+<br />Hai Run (Kooby) Yin,
+<br />Mike Javee (MJ) Galam,
+<br />Coburn Nguyen
+
+## Project Dependencies
+
+Our Dependencies are: flask, requests, flask_pymongo

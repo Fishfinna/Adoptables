@@ -1,0 +1,43 @@
+{% extends "base.html"%} {% block content %}
+<script defer type="text/javascript" src="/static/scripts/form-check.js"></script>
+
+<h1>Edit Account</h1>
+
+<main class="edit-user">
+
+    <form class="form-style" action="/profile/edit" method="post">
+
+        <label for="shelter name">Shelter Name</label>
+        <input type="text" value="{{user.shelter_name}}" placeholder="Enter your name" name="shelter name" required>
+
+
+        <label for="email">Email</label>
+        <input type="email" value="{{user.email}}" placeholder="Enter Email" name="email">
+
+        <label for="phone">Phone Number</label>
+        <input type="text" value="{{user.phone}}" placeholder="Enter Phone Number" name="phone">
+        <hr>
+
+
+        <label for="zipcode">Street</label>
+        <input type="text" value="{{user.street}}" class="form-control" name="street" placeholder="Street">
+        <label for="city">City</label>
+        <input type="text" value="{{user.city}}" class="form-control" name="city" placeholder="City">
+        <label for="province">Province</label>
+        <input type="text" value="{{user.province}}" class="form-control" name="province" placeholder="Province">
+
+        <label for="zipcode">Postal Code</label>
+        <input type="text" value="{{user.postal}}" placeholder="Enter your Postal Code" name="zipcode" required>
+
+        <div class="clearfix">
+            <a href="/"><button type="button" class="delete">Cancel</button></a>
+            <button type="submit" class="signupbtn">Update Details</button>
+        </div>
+
+
+    </form>
+
+
+</main>
+
+{% endblock %}
