@@ -12,7 +12,7 @@ from test.test_webapp_fixtures import *
 def test_homepage(client):
     """checks that the homepage is working"""
     assert client.get("/").status_code == 200
-    assert b'<main>' in client.get("/").data
+    assert b"<main>" in client.get("/").data
 
     # check errors
     request = client.delete("/")
@@ -24,20 +24,17 @@ def test_post_homepage(client, pet):
     pet  # init the pet fixture
 
     # test the search is returning the pet
-    request = client.post(
-        "/", data={"search": "pet_gender"})
+    request = client.post("/", data={"search": "pet_gender"})
     assert request.status_code == 200
     assert b"6279b0cb5ddd36ffc185525b" in request.data
 
     # check that the search empty is working
-    request_none = client.post(
-        "/", data={"search": ""})
+    request_none = client.post("/", data={"search": ""})
     assert request_none.status_code == 200
     assert b"6279b0cb5ddd36ffc185525b" in request.data
 
     # clean up
-    webapp.mongo.db.pets.delete_one(
-        {"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
+    webapp.mongo.db.pets.delete_one({"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
 
 
 # profile details
@@ -65,8 +62,7 @@ def test_user_edit_page(client):
     assert b"<body>" in client.get("/profile/edit").data
 
     # this will make sure client values are set on the page automatically
-    assert b'value=' in client.get(
-        "/profile/edit", subdomain="blue").data
+    assert b"value=" in client.get("/profile/edit", subdomain="blue").data
 
 
 def test_info(client):
@@ -76,6 +72,7 @@ def test_info(client):
 
 
 # pet pages
+
 
 def test_add_pet_form(client):
     assert b"<form" in client.get("/add").data

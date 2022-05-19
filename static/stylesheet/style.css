@@ -738,7 +738,7 @@ textarea {
 footer {
     display: flex;
     align-items: flex-end;
-    height: 20vh;
+    height: max(20vh, auto);
     font-size: 1.3em;
     color: var(--layer-white);
     padding: 1%;

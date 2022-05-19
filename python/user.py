@@ -31,7 +31,7 @@ class User:
         if type(password) != bytes:
             file = open("static/key.key", "rb")
             key = file.read()
-            encode = password.encode('utf-8')
+            encode = password.encode("utf-8")
             self.encoded_password = bcrypt.hashpw(encode, key)
             file.close()
         else:
@@ -46,10 +46,10 @@ class User:
             raise ValueError
 
         if username == self.username:
-            # this decodes the password and checks it
+            # this encodes the password and checks it
             file = open("static/key.key", "rb")
             key = file.read()
-            encode = password.encode('utf-8')
+            encode = password.encode("utf-8")
             hashed_password = bcrypt.hashpw(encode, key)
             file.close()
             if hashed_password == self.encoded_password:

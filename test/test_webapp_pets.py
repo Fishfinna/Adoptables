@@ -9,6 +9,7 @@ from test.test_webapp_fixtures import *
 
 # pet manipulation tests
 
+
 def test_add_pet(client):
     """this will test adding a pet"""
 
@@ -29,8 +30,7 @@ def test_add_pet(client):
     assert request.status_code == 302
 
     # clean up
-    webapp.mongo.db.pets.delete_one(
-        {"name": "", "gender": "", "species": "dog"})
+    webapp.mongo.db.pets.delete_one({"name": "", "gender": "", "species": "dog"})
 
 
 def test_edit_pet(client, pet):
@@ -45,7 +45,7 @@ def test_edit_pet(client, pet):
     # check that the edit page is available
     request_page = client.get(f"/edit/{pet_id}")
     assert request_page.status_code == 200
-    assert b'<form' in request_page.data
+    assert b"<form" in request_page.data
 
     # check that we can put edited content
     request_update = client.post(
@@ -70,8 +70,7 @@ def test_edit_pet(client, pet):
     assert b"Updated Name" in client.get(f"/adopt/{pet_id}").data
 
     # remove the pet
-    webapp.mongo.db.pets.delete_one(
-        {"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
+    webapp.mongo.db.pets.delete_one({"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
 
 
 def test_images(client, pet):
@@ -83,8 +82,7 @@ def test_images(client, pet):
     # make sure it can find image data
     assert b"123" in client.get(f"/file/{pet.get('image')}").data
     # remove the pet
-    webapp.mongo.db.pets.delete_one(
-        {"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
+    webapp.mongo.db.pets.delete_one({"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
 
 
 def test_delete_error(client):

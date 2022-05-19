@@ -34,20 +34,23 @@ def test_sign_up(client):
     )
 
     # this will crash because a user in the system with this name already exists
-    assert client.post(
-        "/signup/accounts",
-        data={
-            "username": "",
-            "password": "password",
-            "shelter name": "shelter name",
-            "email": "email",
-            "street": "street",
-            "city": "city",
-            "province": "province",
-            "postal": "zipcode",
-            "phone": "phone",
-        },
-    ).status_code == 302
+    assert (
+        client.post(
+            "/signup/accounts",
+            data={
+                "username": "",
+                "password": "password",
+                "shelter name": "shelter name",
+                "email": "email",
+                "street": "street",
+                "city": "city",
+                "province": "province",
+                "postal": "zipcode",
+                "phone": "phone",
+            },
+        ).status_code
+        == 302
+    )
 
     # clean up code
     webapp.mongo.db.users.delete_one({"username": ""})
@@ -82,12 +85,10 @@ def test_user_edit_put(client, pet, user):
     assert b"UPDATED" in client.get(f"/adopt/{pet_id}", subdomain="blue").data
 
     # remove the pet
-    webapp.mongo.db.pets.delete_one(
-        {"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
+    webapp.mongo.db.pets.delete_one({"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
 
     # remove the user
-    webapp.mongo.db.users.delete_one(
-        {"_id": ObjectId(f"{user_id}")})
+    webapp.mongo.db.users.delete_one({"_id": ObjectId(f"{user_id}")})
 
 
 def test_delete(client, user, pet):
@@ -103,14 +104,14 @@ def test_delete(client, user, pet):
     assert client.get("/profile/delete", subdomain="blue").status_code == 302
 
     # check that it's deleted
-    assert b"name@my.bcit.ca" not in client.get(
-        f"/adopt/{pet_id}", subdomain="blue").data
+    assert (
+        b"name@my.bcit.ca" not in client.get(f"/adopt/{pet_id}", subdomain="blue").data
+    )
 
 
 def test_login_manager(client):
     """test login"""
-    assert b"user can not" in client.post(
-        "/login/manage", data={"username": ""}).data
+    assert b"user can not" in client.post("/login/manage", data={"username": ""}).data
 
 
 def test_signup_error(client):

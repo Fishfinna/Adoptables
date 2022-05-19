@@ -53,16 +53,24 @@ def homepage():
 
     elif request.method == "POST":
         pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
-        search_pets = [pet for pet in list(
-            pets) if request.form.get('search').upper() in str(pet.to_dict()).upper()]
+        search_pets = [
+            pet
+            for pet in list(pets)
+            if request.form.get("search").upper() in str(pet.to_dict()).upper()
+        ]
         if len(search_pets) == 0:
-            return render_template("homepage.html", pets=list(search_pets), session=session, error='No pets found')
+            return render_template(
+                "homepage.html",
+                pets=list(search_pets),
+                session=session,
+                error="No pets found",
+            )
         return render_template("homepage.html", pets=list(search_pets), session=session)
     else:
         return render_template("404.html", error="method not allowed"), 405
 
 
-@ app.route("/info")
+@app.route("/info")
 def infopage():
     """learn more page"""
     try:
@@ -71,7 +79,7 @@ def infopage():
         return render_template("404.html"), 404
 
 
-@ app.route("/adopt/<string:id>")
+@app.route("/adopt/<string:id>")
 def adopt_info(id):
     """shows the individual pet page"""
     try:
@@ -83,7 +91,7 @@ def adopt_info(id):
         return render_template("404.html"), 404
 
 
-@ app.route("/remove/<id>", methods=["GET", "POST"])
+@app.route("/remove/<id>", methods=["GET", "POST"])
 def delete_pet(id):
     """this will delete pets and redirect to home"""
     try:
@@ -97,7 +105,7 @@ def delete_pet(id):
         return render_template("404.html"), 404
 
 
-@ app.route("/add")
+@app.route("/add")
 def addpet():
     """Add a pet form page"""
     try:
@@ -106,7 +114,7 @@ def addpet():
         return render_template("404.html"), 404
 
 
-@ app.route("/add/newPet", methods=["POST"])
+@app.route("/add/newPet", methods=["POST"])
 def pet_manage_adder():
     """Manages the file storage"""
     if "myfile" in request.files:
@@ -132,7 +140,7 @@ def pet_manage_adder():
     return redirect("/profile")
 
 
-@ app.route("/edit/<id>")
+@app.route("/edit/<id>")
 def editpet(id):
     """this will display the currently selected pet"""
 
@@ -144,7 +152,7 @@ def editpet(id):
         return render_template("404.html"), 404
 
 
-@ app.route("/edit/<id>/put", methods=["POST"])
+@app.route("/edit/<id>/put", methods=["POST"])
 def pet_manage_edit(id):
     """This will be the update pet page output"""
 
@@ -225,22 +233,28 @@ def manage_signup():
     return redirect("/profile")
 
 
-@app.route("/profile")
+@app.route("/profile", methods=["GET", "POST"])
 def profile():
     """display the current user profile"""
     try:
         user = session["user"]
 
-        # this will create all of the pets that belong to the user
+        # this will create a list of all of the pets that belong to the user
         pets = [
             Pet(*x.values())
             for x in mongo.db.pets.find(
                 {"shelter_username": session["user"].get("username")}
             )
         ]
-        return render_template(
-            "profile.html", profile=session["user"], session=session, pets=pets
-        )
+        if request.method == "POST":
+            pets = [
+                pet
+                for pet in list(pets)
+                if request.form.get("search").upper() in str(pet.to_dict()).upper()
+            ]
+            if len(pets) == 0:
+                return render_template("profile.html", profile=user, session=session, pets=pets, error="No pets matching this search can be found")
+        return render_template("profile.html", profile=user, session=session, pets=pets)
     except:
         return render_template("404.html", error="profile not found")
 
@@ -269,9 +283,13 @@ def login_manage():
             ):
                 session["user"] = account.get_account()
                 return redirect("/profile")
-        return render_template("login.html", session=session, error="user can not be found")
+        return render_template(
+            "login.html", session=session, error="user can not be found"
+        )
     except:
-        return render_template("login.html", session=session, error="user can not be found")
+        return render_template(
+            "login.html", session=session, error="user can not be found"
+        )
 
 
 @app.route("/logout")
@@ -294,7 +312,8 @@ def edit_user():
 
     elif request.method == "POST":
         selected = mongo.db.users.find_one_or_404(
-            {"username": session["user"].get("username")})
+            {"username": session["user"].get("username")}
+        )
 
         update_selected = update_selected = {
             "$set": {
@@ -307,12 +326,14 @@ def edit_user():
                 "province": request.form.get("province"),
                 "postal": request.form.get("zipcode"),
                 "phone": request.form.get("phone"),
-            }}
+            }
+        }
 
         mongo.db.users.update_one(selected, update_selected)
 
         selected = mongo.db.users.find_one(
-            {"username": session["user"].get("username")})
+            {"username": session["user"].get("username")}
+        )
         account = User(*list(selected.values())[1:])
 
         session["user"] = account.get_account()
@@ -322,14 +343,15 @@ def edit_user():
         return render_template("login.html", session=session)
 
 
-@ app.route("/profile/delete")
+@app.route("/profile/delete")
 def delete_user():
     """delete a user and their listed pets from the application"""
 
     try:
         if session["user"]:
             mongo.db.pets.delete_many(
-                {"shelter_username": session["user"].get("username")})
+                {"shelter_username": session["user"].get("username")}
+            )
 
             mongo.db.users.delete_one(
                 {"username": session["user"].get("username")})

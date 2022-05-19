@@ -41,7 +41,7 @@ class Pet:
         return f"""< PET name:{self.name} age:{self.age} species:{self.species} gender:{self.gender}>"""
 
     def to_dict(self):
-        """Converts the pet to a dic, in JSON format"""
+        """Converts the pet to a dict, in JSON format"""
         return {
             "id": f"{self.id}",
             "name": f"{self.name}",
