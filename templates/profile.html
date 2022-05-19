@@ -1,5 +1,7 @@
 {% extends "base.html"%} {% block content %}
 <main>
+
+    <!-- profile info -->
     <div class="profile_content">
         <div class=profile_div>
             <h2>Shelter Name: {{profile.shelter_name}}</h2>
@@ -11,13 +13,18 @@
         </div>
         <div>
             <a href="/profile/edit"><button>Edit</button></a>
-            <a href="/profile/delete" onclick="return confirm_delete();" type="submit"><button class="delete"> Delete Account</button></a>
+            <a href="/profile/delete" onclick="return confirm_delete();" type="submit"><button class="delete"> Delete
+                    Account</button></a>
         </div>
 
     </div>
 
 
     <h3>Listed Pets:</h3>
+
+
+    <a href="/add" id="add-pet-button"><button>+ ADD A PET</button></a>
+
 
     <!-- search bar -->
     <form id="myInput" class="form-style" method="post">
@@ -29,9 +36,8 @@
     </form>
 
 
-    <a href="/add" id="add-pet-button"><button>+ ADD A PET</button></a>
 
-
+    <!-- listed pets -->
     <div class="pet-list">
 
         {% for pet in pets %}
