@@ -11,7 +11,3 @@ Ravi Walberg,
 <br />Hai Run (Kooby) Yin,
 <br />Mike Javee (MJ) Galam,
 <br />Coburn Nguyen
-
-## Project Dependencies
-
-Our Dependencies are: flask, requests, flask_pymongo
