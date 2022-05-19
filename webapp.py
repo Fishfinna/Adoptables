@@ -51,6 +51,7 @@ def homepage():
         except:
             return render_template("404.html"), 404
 
+    # this will respond to the searching feature
     elif request.method == "POST":
         pets = [Pet(*x.values()) for x in mongo.db.pets.find({})]
         search_pets = [
@@ -315,6 +316,7 @@ def edit_user():
             {"username": session["user"].get("username")}
         )
 
+        # updates the item
         update_selected = update_selected = {
             "$set": {
                 "username": session["user"].get("username"),
