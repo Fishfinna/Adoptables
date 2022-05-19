@@ -1,7 +1,48 @@
 {% extends "base.html" %} {% block content %}
 <h1>Currently Adoptable Pets</h1>
 <main>
+    <!-- Slideshow Container-->
+    <div class = "Slideshow-container">
 
+    <!-- Full images with numbers and message Info-->
+        <!-- First Image -->
+
+        <div class = "Image-container">
+            <div class = "Message-Info"></div>
+            <img src = "">
+            <div class = "Info">First Image</div>
+        </div >
+        <!-- Second Image -->
+       
+        <div class = "Image-container">
+            <div class = "Message-Info"></div>
+            <img src = "">
+            <div class = "Info">Second Image</div>
+        </div >
+
+        <!-- Third Image -->
+        
+        <div class = "Image-container">
+            <div class = "Message-Info"></div>
+            <img src = "">
+            <div class = "Info">Third Image</div>
+        </div>
+
+        <!-- Back and forward function -->
+
+        <a class = "Back-Button" onclick ="pushSlide(-1)"></a>
+        <a class = "Forward-Button" onclick = "pushSlide(1)"></a>
+    </div>
+
+    <!-- Triple Dots -->
+
+
+    <div>
+        <span class = "dots" onclick = "currentSlide(1)"></span>
+        <span class = "dots" onclick = "currentSlide(2)"></span>
+        <span class = "dots" onclick = "currentSlide(3)"></span>
+    </div>
+    
     <form id="myInput" class="form-style" action="post">
         <div class="search-container">
             <input type="text" id="search" placeholder="Search">
