@@ -9,7 +9,6 @@
         <br>
         <div class="pet-info pet-contact-info">
             <h1>Description</h1>
-
             <p class="pet-content">Species: {{pet.species}} | Age: {{pet.age}} | Gender: {{pet.gender}}</p>
             <hr>
             <pre>{{pet.description}}</pre>
@@ -17,6 +16,7 @@
         </div>
         <div class="pet-info pet-contact-info">
             <h1>Contact</h1>
+            <hr>
 
             <h2 id="name-of-shelter">Shelter Name: {{profile.shelter_name}}</h2>
             <p id="shelter_email">Email: {{profile.email}}</p>
@@ -36,8 +36,7 @@
                         <input type="text" id="Subject" name="subject">
 
                         <label for="message" class="fcf-label">Your message</label>
-                        <textarea id="message" name="message" class="fcf-form-control" rows="6" maxlength="3000"
-                            required></textarea>
+                        <textarea id="message" name="message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
 
                     </div>
                     <button onclick='sendEmail()' type="submit">Send message</button>

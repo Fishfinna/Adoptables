@@ -131,7 +131,7 @@ nav {
     display: none;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
     .topnav a:not(:first-child) {
         display: none;
     }
@@ -141,7 +141,7 @@ nav {
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
     .topnav.responsive {
         position: relative;
     }
@@ -181,6 +181,11 @@ img {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
+.pet-info {
+    width: 80%;
+    align-self: center;
+}
+
 .pet-list {
     display: flex;
     flex-direction: row;
@@ -189,7 +194,7 @@ img {
 }
 
 .pet-content {
-    font-size: 1.8em;
+    font-size: 1.2em;
     text-align: center;
 }
 
