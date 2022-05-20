@@ -34,7 +34,8 @@ def test_post_homepage(client, pet):
     assert b"6279b0cb5ddd36ffc185525b" in request.data
 
     # clean up
-    webapp.mongo.db.pets.delete_one({"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
+    webapp.mongo.db.pets.delete_one(
+        {"_id": ObjectId("6279b0cb5ddd36ffc185525b")})
 
 
 # profile details
@@ -72,7 +73,6 @@ def test_info(client):
 
 
 # pet pages
-
 
 def test_add_pet_form(client):
     assert b"<form" in client.get("/add").data
