@@ -3,6 +3,7 @@ This is the group 11, set B acit 2911 project.
 In this project we will create a basic pet adoption app.
 
 ## CREATORS
+
 Ravi Walberg,
 <br />Phuong Vi Dang,
 <br />Shanti Stein-Gagnon,
