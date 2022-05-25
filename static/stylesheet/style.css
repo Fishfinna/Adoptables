@@ -683,7 +683,7 @@ textarea {
     padding: min(10px, 3em);
     cursor: pointer;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--off-white);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
@@ -824,4 +824,53 @@ footer {
 }
 
 /* dynamic text */
+.static-text {
+    font-weight: 400;
+}
 
+.type-wrapper .dynamic-texts {
+    margin-left: 15px;
+    height: 75px;
+    line-height: normal;
+    width: 100%;
+    background-color: var(--main-bg);
+    overflow: hidden;
+
+}
+
+.dynamic-texts li {
+    text-align: center;
+    list-style: none;
+    font-size: 60px;
+    font-weight: 500;
+    position: relative;
+    top: 0;
+    animation: slide 6s steps(6) infinite;
+}
+@keyframes slide {
+    100%{
+        top: -460px;
+        margin: 0 -60px 0 60px;
+    }
+}
+
+.dynamic-texts li span{
+    position: relative;
+}
+.dynamic-texts li span::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--main-bg);
+    border-left: 2px solid black;
+    animation: typing 1s steps(10) infinite;
+}
+
+@keyframes typing {
+    100%{
+        left: 100%;
+        margin: 0 -35px 0 35px;
+    }
+}
