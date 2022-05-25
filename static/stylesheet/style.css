@@ -683,7 +683,7 @@ textarea {
     padding: min(10px, 3em);
     cursor: pointer;
     border-radius: 10px;
-    background-color: white;
+    background-color: var(--off-white);
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
@@ -766,39 +766,27 @@ footer {
 
 .Image-container {
     display: none;
+    width: 380px;
 }
 
 .Message-Info {
-
+    color: #4d3247;
+    font-size: 14px;
+    padding: 10px 14px;
+    position: absolute;
+    top: 0;
 }
 
 .Info {
-
-}
-
-
-.Back-Button, .Forward-Button {
-    cursor: pointer;
+    color: #4d3247;
+    font-size: 16px;
+    padding: 10px 14px;
     position: absolute;
-    top:25%;
-    width: auto;
-    margin-top: 20px;
-    padding: 20px;
-    color:#4d3247;
-    font-weight: bold;
-    transition: 0.4s ease;
-    border-radius: 0 5px 5px 0;
-    user-select: none;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
 }
 
-.Forward-Button {
-    right: 0;
-    border-radius: 4px 0 0 4px;
-}
-
-.Back-Button:hover, .forward:hover{
-    background-color: #6f4b59;
-}
 .dots {
     cursor: pointer;
     height: 20px;
@@ -826,6 +814,63 @@ footer {
     to {opacity: 2;}
 }
 
+@keyframes fade{
+       from {opacity: .5;}
+    to {opacity: 2;}
+}
+
 .triple-dots {
     text-align: center;
+}
+
+/* dynamic text */
+.static-text {
+    font-weight: 400;
+}
+
+.type-wrapper .dynamic-texts {
+    margin-left: 15px;
+    height: 75px;
+    line-height: normal;
+    width: 100%;
+    background-color: var(--main-bg);
+    overflow: hidden;
+
+}
+
+.dynamic-texts li {
+    text-align: center;
+    list-style: none;
+    font-size: 60px;
+    font-weight: 500;
+    position: relative;
+    top: 0;
+    animation: slide 6s steps(6) infinite;
+}
+@keyframes slide {
+    100%{
+        top: -460px;
+        margin: 0 -60px 0 60px;
+    }
+}
+
+.dynamic-texts li span{
+    position: relative;
+}
+.dynamic-texts li span::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--main-bg);
+    border-left: 2px solid black;
+    animation: typing 1s steps(10) infinite;
+}
+
+@keyframes typing {
+    100%{
+        left: 100%;
+        margin: 0 -35px 0 35px;
+    }
 }
