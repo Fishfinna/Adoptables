@@ -766,18 +766,43 @@ footer {
 
 .Image-container {
     display: none;
+    width: 380px;
 }
 
 .Message-Info {
-
+    color: #4d3247;
+    font-size: 14px;
+    padding: 10px 14px;
+    position: absolute;
+    top: 0;
 }
 
 .Info {
-
+    color: #4d3247;
+    font-size: 16px;
+    padding: 10px 14px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
 }
 
 
-.Back-Button, .Forward-Button {
+.Back-Button {
+    cursor: pointer;
+    position: absolute;
+    top:25%;
+    width: auto;
+    margin-top: 20px;
+    padding: 20px;
+    color:#4d3247;
+    font-weight: bold;
+    transition: 0.4s ease;
+    border-radius: 0 5px 5px 0;
+    user-select: none;
+}
+
+.Forward-Button {
     cursor: pointer;
     position: absolute;
     top:25%;
@@ -796,7 +821,11 @@ footer {
     border-radius: 4px 0 0 4px;
 }
 
-.Back-Button:hover, .forward:hover{
+.Back-Button:hover {
+    background-color: #6f4b59;
+}
+
+.Forward-Button:hover {
     background-color: #6f4b59;
 }
 .dots {
@@ -823,6 +852,11 @@ footer {
 
 @-webkit-keyframes fade {
     from {opacity: .5;}
+    to {opacity: 2;}
+}
+
+@keyframes fade{
+       from {opacity: .5;}
     to {opacity: 2;}
 }
 
