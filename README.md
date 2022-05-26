@@ -14,3 +14,11 @@ Ravi Walberg,
 <br />Hai Run (Kooby) Yin,
 <br />Mike Javee (MJ) Galam,
 <br />Coburn Nguyen
+
+## TOOLS
+
+for this project we used flask in pythons
+<br /> Mongo for our database
+<br /> JS, HTML, and CSS for our front end application
+<br /> and hosted our system on both heroku: https://adoptables-app.herokuapp.com/
+and azure: http://adoptables.azurewebsites.net/
