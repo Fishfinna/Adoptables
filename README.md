@@ -1,6 +1,10 @@
 # ACIT 2911 PROJECT
+
 This is the group 11, set B acit 2911 project.
-In this project we will create a basic pet adoption app.
+In this project we have created a pet adoption application
+that allows for adopters to view and contact shelters about currently adoptable pets
+and for shelters to create accounts, log in with their contact details,
+and enter information about the pets that they currently have up for adoption.
 
 ## CREATORS
 

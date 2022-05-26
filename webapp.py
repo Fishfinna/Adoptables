@@ -226,8 +226,7 @@ def manage_signup():
 
     user_account = User(*user_data.values())
     mongo.db.users.insert_one(user_account.get_account())
-    selected = mongo.db.users.find_one(
-        {"username": request.form.get("username")})
+    selected = mongo.db.users.find_one({"username": request.form.get("username")})
     account = User(*list(selected.values())[1:])
     session["user"] = account.get_account()
 
@@ -254,7 +253,13 @@ def profile():
                 if request.form.get("search").upper() in str(pet.to_dict()).upper()
             ]
             if len(pets) == 0:
-                return render_template("profile.html", profile=user, session=session, pets=pets, error="No pets matching this search can be found")
+                return render_template(
+                    "profile.html",
+                    profile=user,
+                    session=session,
+                    pets=pets,
+                    error="No pets matching this search can be found",
+                )
         return render_template("profile.html", profile=user, session=session, pets=pets)
     except:
         return render_template("404.html", error="profile not found")
@@ -274,8 +279,7 @@ def login():
 def login_manage():
     """Manages the login of a user"""
     try:
-        selected = mongo.db.users.find_one(
-            {"username": request.form.get("username")})
+        selected = mongo.db.users.find_one({"username": request.form.get("username")})
         if selected:
             account = User(*list(selected.values())[1:])
 
@@ -355,8 +359,7 @@ def delete_user():
                 {"shelter_username": session["user"].get("username")}
             )
 
-            mongo.db.users.delete_one(
-                {"username": session["user"].get("username")})
+            mongo.db.users.delete_one({"username": session["user"].get("username")})
             session["user"] = None
 
         return redirect("/")
