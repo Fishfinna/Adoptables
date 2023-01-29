@@ -20,4 +20,4 @@ Ravi Walberg,
 for this project we used flask in python 3.9
 <br /> Mongo for our database
 <br /> JS, HTML, and CSS for our front end application
-<br /> and hosted our system on heroku https://adoptables-app.herokuapp.com/
+<br /> and hosted our system on heroku. Just Kidding, due to heroku ending it's free teir, our project is no longer being hosted. RIP.
